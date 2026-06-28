@@ -1,0 +1,15 @@
+{
+  "name": "ai-skills",
+  "description": "Alialzein's personal collection of Claude Code Agent Skills, packaged as an installable plugin.",
+  "version": "0.1.0",
+  "author": {
+    "name": "alialzein",
+    "email": "Alizein1997@gmail.com"
+  },
+  "homepage": "https://github.com/alialzein/ai-skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alialzein/ai-skills.git"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "ai-skills",
+  "version": "0.1.0",
+  "description": "Alialzein's personal Claude Code skills marketplace.",
+  "owner": {
+    "name": "alialzein",
+    "email": "Alizein1997@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "ai-skills",
+      "description": "A growing collection of personal Agent Skills (currently: teach).",
+      "source": "./",
+      "version": "0.1.0",
+      "author": {
+        "name": "alialzein",
+        "email": "Alizein1997@gmail.com"
+      },
+      "category": "productivity"
+    }
+  ]
+}

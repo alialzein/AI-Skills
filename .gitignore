@@ -1,0 +1,10 @@
+# Local, machine-specific Claude Code settings (keep the .example checked in)
+.claude/settings.json
+.claude/settings.local.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
