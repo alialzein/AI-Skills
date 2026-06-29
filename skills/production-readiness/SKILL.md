@@ -57,9 +57,13 @@ read **only when relevant** — don't load them all up front:
 4. **Prioritize by risk-per-effort.** Lead with the cheap fixes that remove the most risk.
    Never dump every item as equally urgent.
 
-5. **Offer to act.** After reporting, offer to (a) drop `assets/PRODUCTION-READINESS.md`
-   into the repo as a tracked checklist, (b) scaffold a CI workflow, and (c) fix the top
-   blockers. For any schema/infra change, propose first — don't apply silently.
+5. **Offer to act — this is your differentiated value.** A prose review is something any
+   assistant can produce; what makes this skill worth invoking is turning the review into
+   artifacts the repo keeps. After reporting, proactively offer to (a) drop
+   `assets/PRODUCTION-READINESS.md` into the repo as a tracked, scoped checklist with the
+   findings filled in, (b) scaffold a CI workflow that runs typecheck/lint/test/build, and
+   (c) write the missing seam test(s) or fix the top blockers. For any schema/infra change,
+   propose first — don't apply silently.
 
 ## Severity × effort rubric
 

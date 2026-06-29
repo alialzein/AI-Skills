@@ -1,0 +1,26 @@
+{
+  "skill_name": "production-readiness",
+  "evals": [
+    {
+      "id": 0,
+      "name": "saas-launch-review",
+      "prompt": "I'm the solo dev on `mailsync` (a multi-tenant SaaS that syncs Gmail and drafts replies with OpenAI; Postgres backend). I want to launch next week. Review the repo and tell me if it's production-ready and what I'm missing. Be specific about the riskiest gaps.",
+      "expected_output": "Severity-ranked review that catches: no CI, non-atomic delete-then-insert, no 429 backoff, uncapped OpenAI/embedding spend, untested sync orchestrator, secret logged, silent catch. Cites file evidence.",
+      "files": ["repos/mailsync (planted gaps)"]
+    },
+    {
+      "id": 1,
+      "name": "new-saas-foundation",
+      "prompt": "I'm about to start a new B2B SaaS — Next.js + Postgres + Stripe, plus an OpenAI summarization feature. Before I write features, what should I set up from day one so I don't regret it? Give me the foundational checklist.",
+      "expected_output": "Day-1 foundation: CI from commit 1, typecheck/lint/test, .env.example, data-integrity/RLS decision, config-at-boot, AND cost caps for the OpenAI feature, confirm gate. Prioritized.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "cli-scope-discipline",
+      "prompt": "Review my CLI tool `csvfmt` (a tiny Node CLI that pretty-prints a CSV passed as an argument) for production readiness before I publish to npm. What should I fix?",
+      "expected_output": "Flags missing CI + tests on arg/failure paths + the unguarded missing-file read + publish/release concerns. Respects scope: does NOT flag RLS, dark mode, admin panels, or AI cost caps as gaps.",
+      "files": ["repos/csvfmt (CLI scope test)"]
+    }
+  ]
+}

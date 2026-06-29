@@ -1,0 +1,21 @@
+[
+  {"id": 1,  "should_trigger": true,  "query": "ok i think the app is basically done — can you go through my repo and tell me what i forgot before i put it in front of paying customers? it's a next.js + supabase thing"},
+  {"id": 2,  "should_trigger": true,  "query": "we're launching the API next Tuesday. can you review it and flag anything that could blow up in prod? especially the stripe webhook handler"},
+  {"id": 3,  "should_trigger": true,  "query": "starting a fresh SaaS today (rails + postgres + an openai feature). set me up properly from the start so i don't regret it in 6 months — CI, tests, the works"},
+  {"id": 4,  "should_trigger": true,  "query": "my background sync job sometimes duplicates rows and once wiped a user's data when it crashed halfway. can you look at how it writes to the db and tell me what's structurally wrong?"},
+  {"id": 5,  "should_trigger": true,  "query": "is this thing ready to ship? it's a node service that talks to the shopify api and runs a nightly cron"},
+  {"id": 6,  "should_trigger": true,  "query": "audit my codebase for the stuff teams usually miss — error handling on external calls, secret management, idempotency, that kind of thing"},
+  {"id": 7,  "should_trigger": true,  "query": "before i merge this PR that adds the email-sending feature, what should i be checking? we really don't want to accidentally spam people or double-send"},
+  {"id": 8,  "should_trigger": true,  "query": "i keep getting surprise openai bills. can you go through everywhere we call the api and tell me what guardrails we're missing?"},
+  {"id": 9,  "should_trigger": true,  "query": "help me harden my web app before launch next month — what tests am i missing, do i need CI, what about backups and rate limiting?"},
+
+  {"id": 10, "should_trigger": false, "query": "my production database is down RIGHT NOW and users are getting 500s — help me figure out why and get it back up asap"},
+  {"id": 11, "should_trigger": false, "query": "write me a github actions workflow that deploys to vercel on every push to main"},
+  {"id": 12, "should_trigger": false, "query": "explain what a two-way door decision is, i saw the term in a blog post about leadership"},
+  {"id": 13, "should_trigger": false, "query": "review this pull request for code style and naming consistency — are my variable names clear and is the formatting idiomatic?"},
+  {"id": 14, "should_trigger": false, "query": "what's the cleanest way to unit test a pure function that calculates tax brackets? jest or vitest?"},
+  {"id": 15, "should_trigger": false, "query": "my rate limiter is rejecting legit users, here's the redis config — can you spot why it's miscounting?"},
+  {"id": 16, "should_trigger": false, "query": "set up prettier and eslint in my repo with the standard config"},
+  {"id": 17, "should_trigger": false, "query": "can you help me write the marketing landing page copy for our product launch?"},
+  {"id": 18, "should_trigger": false, "query": "is postgres or mysql a better choice for a multi-tenant b2b saas? just want your opinion"}
+]
