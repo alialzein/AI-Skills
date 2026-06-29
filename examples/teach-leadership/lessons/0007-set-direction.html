@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 7 · Set direction people can act on</title>
+<style>
+:root{--ink:#1a1a1a;--paper:#fdfcf9;--muted:#6b6256;--rule:#e4dccb;--accent:#7a1f1f;--good:#1f6b3a;--bad:#9a2b2b;--soft:#f4efe3}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;line-height:1.5;margin:0;padding:4rem 1.5rem;font-size:19px}
+.wrap{max-width:42rem;margin:0 auto}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:-apple-system,Helvetica,Arial,sans-serif}
+h1{font-size:2.1rem;line-height:1.15;margin:.3rem 0 1rem;font-weight:600}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;font-weight:600}
+a{color:var(--accent)}
+.lede{font-size:1.15rem;color:#3a342c}
+blockquote{margin:1.4rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule);color:var(--muted);font-style:italic}
+.card{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:1.1rem 1.3rem;margin:1.2rem 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.tool li{margin:.5rem 0}
+.tool b{font-variant:small-caps;letter-spacing:.02em}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cols .card h3{margin:.1rem 0 .5rem;font-size:1rem;font-family:-apple-system,Helvetica,Arial,sans-serif}
+.bad-h{color:var(--bad)}.good-h{color:var(--good)}
+.stat{font-size:.92rem;color:var(--muted)}
+.quiz .q{font-weight:600;margin:.2rem 0 .6rem}
+.opt{display:block;width:100%;text-align:left;cursor:pointer;margin:.4rem 0;padding:.6rem .8rem;border:1px solid var(--rule);border-radius:8px;background:#fff;font:inherit;font-size:.96rem;transition:.15s}
+.opt:hover{background:var(--soft)}
+.opt.correct{border-color:var(--good);background:#eef7f0}
+.opt.wrong{border-color:var(--bad);background:#fbeeee}
+.fb{display:none;margin:.5rem 0 0;font-size:.95rem}
+.fb.show{display:block}
+.task{background:var(--soft);border:1px dashed #cdbf9f;border-radius:10px;padding:1.1rem 1.3rem}
+.foot{margin-top:2.6rem;border-top:1px solid var(--rule);padding-top:1rem;font-size:.92rem;color:var(--muted)}
+@media (max-width:560px){.cols{grid-template-columns:1fr}}
+@media print{body{padding:0;font-size:12pt}.opt{pointer-events:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="kicker">Strong Team Leadership · Lesson 7 of your course</div>
+  <h1>Set direction people can act on</h1>
+  <p class="lede">You can't hand off outcomes (Lesson 1) if no one's clear what the
+  outcomes <em>are</em>. A leader's first product is clarity: a short list of what
+  matters most — and the permission to ignore the rest.</p>
+
+  <h2>Why this closes the loop</h2>
+  <p>Delegation only works when people know what actually matters. That's the gap
+  this lesson fills. The cleanest tool for it is the <b>OKR</b> — Objectives &amp;
+  Key Results — the system John Doerr carried from Intel into Google in
+  <em>Measure What Matters</em>.
+  <a href="https://www.whatmatters.com/okrs-explained/why-okrs-john-joerr">[Why OKRs]</a>
+  Done well, it focuses effort, aligns a team, and makes progress measurable instead
+  of a matter of opinion.
+  <a href="https://www.whatmatters.com/okrs-explained/benefits-of-okrs">[Benefits of OKRs]</a></p>
+  <blockquote>Direction isn't a speech you give once. It's a short list people can
+  recite — and use to make calls when you're not in the room.</blockquote>
+  <p>So the closing skill of this course is naming what matters clearly enough that
+  the team can run toward it without you — and clearly enough that they know what to
+  drop.</p>
+
+  <h2>The tool: write one Objective + 2–3 Key Results</h2>
+  <div class="card"><ol class="tool">
+    <li><b>Objective</b> — what you want to achieve, stated qualitatively and memorably. This is the direction. <em>("Customers trust our product's reliability.")</em></li>
+    <li><b>Key Results</b> — 2–3 measurable outcomes that prove you got there. Numbers, not tasks. <em>("Crash-free sessions 98% → 99.7%," not "fix the crash backlog.")</em></li>
+    <li><b>Then your real job</b> — repeat it until everyone can recite it, and give <em>context, not control</em>: explain <b>why</b> it matters so people make good calls without you.</li>
+  </ol></div>
+  <p><b>Focus is the point.</b> OKRs also tell you what <em>not</em> to do. Doerr's
+  first "superpower" is Focus — the power to say no to everything that doesn't serve
+  the objective. A direction that drops nothing isn't a direction; it's a wish list.</p>
+
+  <h2>See the difference</h2>
+  <div class="cols">
+    <div class="card">
+      <h3 class="bad-h">✗ Vague direction</h3>
+      <p>"Let's improve quality this quarter."</p>
+      <p class="stat">Nobody knows when they're done, how it's measured, or what to
+      drop to make room for it. Everyone stays busy; nothing moves.</p>
+    </div>
+    <div class="card">
+      <h3 class="good-h">✓ Clear OKR</h3>
+      <p><b>Objective:</b> Customers trust our product's reliability.</p>
+      <p><b>Key Results:</b> Cut P1 bugs from 12 → 3 · Crash-free sessions
+      98% → 99.7% · Support tickets about errors down 40%.</p>
+    </div>
+  </div>
+
+  <h2>Check yourself <span class="stat">(retrieval — no peeking)</span></h2>
+  <div class="quiz">
+    <div class="card">
+      <p class="q">1. A Key Result should be —</p>
+      <button class="opt" data-c="0">A measurable outcome, not a task</button>
+      <button class="opt" data-c="1">A list of planned activities</button>
+      <p class="fb" data-right="✓ Yes — KRs are numbers that prove the objective." data-wrong="✗ Activities aren't results; measure the outcome."></p>
+    </div>
+    <div class="card">
+      <p class="q">2. Doerr's first "superpower" of OKRs is Focus, which gives you permission to —</p>
+      <button class="opt" data-c="0">Say no to the rest</button>
+      <button class="opt" data-c="1">Add more goals safely</button>
+      <p class="fb" data-right="✓ Right — focus means dropping what doesn't serve it." data-wrong="✗ More goals is the opposite of focus."></p>
+    </div>
+    <div class="card">
+      <p class="q">3. After setting direction, a leader's main job is to —</p>
+      <button class="opt" data-c="0">Repeat it and give context</button>
+      <button class="opt" data-c="1">Assume it was heard once</button>
+      <p class="fb" data-right="✓ Yes — say it until everyone can recite the why." data-wrong="✗ Said once is never heard; clarity needs repetition."></p>
+    </div>
+  </div>
+
+  <h2 id="task">Your task this week</h2>
+  <div class="task">
+    <p><b>Draft one quarterly Objective</b> for your team plus 2–3 measurable Key
+    Results. Then share it with the team and ask each person what they'd
+    <em>stop doing</em> to focus on it — that question is where focus becomes real.</p>
+    <p style="margin-bottom:0">Then <b>paste me your draft OKR</b> and I'll help you
+    sharpen it — tightening the objective so it's memorable, and the key results so
+    they're numbers, not tasks.</p>
+  </div>
+
+  <h2>Go deeper (one source)</h2>
+  <p>Primary source for this lesson: <b>John Doerr, <em>Measure What Matters</em></b> —
+  on how a clear objective and a few measurable key results focus a whole organization.
+  <a href="https://www.amazon.com/Measure-What-Matters-Google-Foundation/dp/0525536221">amazon.com</a>.</p>
+
+  <div class="foot">
+    <p>📌 <b>I'm your teacher — ask me anything.</b> That's the whole course. Notice how
+    the skills reinforce each other: safety (L2) lets candor (L3) and coaching (L4)
+    actually work; clear decisions (L5), calm hard conversations (L6), and sharp
+    direction (L7) are what make delegation (L1) <em>safe</em> in the first place.</p>
+    <p>From here: loop back to revisit any lesson, do the real-world tasks for keeps,
+    and pressure-test your skills with a leadership community
+    (e.g. <a href="https://www.reddit.com/r/managers/">r/managers</a>).</p>
+    <p>That's the core course — tell me which situation you're facing now and we'll go
+    deeper, or revisit any lesson.</p>
+  </div>
+</main>
+<script>
+document.querySelectorAll('.quiz .card').forEach(card=>{
+  const fb=card.querySelector('.fb');
+  card.querySelectorAll('.opt').forEach(btn=>{
+    if(btn.textContent.trim()===''){btn.style.display='none';return;}
+    btn.addEventListener('click',()=>{
+      const ok=btn.dataset.c==='0';
+      card.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+      btn.classList.add(ok?'correct':'wrong');
+      fb.textContent = ok
+        ? '✓ Correct — that’s the strongest move here. Notice why the other option falls short.'
+        : '✗ Not quite — re-read the section above; the other option is the stronger move.';
+      fb.classList.add('show');
+    });
+  });
+});
+</script>
+</body>
+</html>

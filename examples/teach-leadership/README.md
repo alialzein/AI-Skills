@@ -1,7 +1,7 @@
 # Sample workspace: `teach` → "How to be a strong leader"
 
 This folder is a **real, worked example of the [`teach`](../../skills/teach) skill** in
-action. It's the state of one learning workspace after Session 1, so you can see
+action — a complete 7-lesson course on becoming a strong team leader, so you can see
 exactly what the skill produces and how a course accumulates over time.
 
 ## How to view the lessons
@@ -15,10 +15,31 @@ read a lesson, use one of these:
 | **GitHub Pages** (nicest, permanent URLs) | Repo → **Settings → Pages** → Source: `main` / root. Then visit `https://alialzein.github.io/AI-Skills/examples/teach-leadership/lessons/0001-delegate-outcomes-not-tasks.html`. |
 | **Local** | Clone the repo and open the `.html` files in any browser (they're self-contained). |
 
-### Lessons
-- **Lesson 1 — Delegate outcomes, not tasks**
-  · [▶ view rendered](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0001-delegate-outcomes-not-tasks.html)
-  · [source](./lessons/0001-delegate-outcomes-not-tasks.html)
+### Lessons (the full course)
+1. **Delegate outcomes, not tasks**
+   · [▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0001-delegate-outcomes-not-tasks.html)
+   · [source](./lessons/0001-delegate-outcomes-not-tasks.html)
+2. **Make it safe to tell you the truth** (psychological safety)
+   · [▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0002-psychological-safety.html)
+   · [source](./lessons/0002-psychological-safety.html)
+3. **Radical Candor** (caring + direct feedback)
+   · [▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0003-radical-candor.html)
+   · [source](./lessons/0003-radical-candor.html)
+4. **Say less, ask more** (coaching & 1:1s)
+   · [▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0004-coaching-and-one-on-ones.html)
+   · [source](./lessons/0004-coaching-and-one-on-ones.html)
+5. **Decide fast, commit together** (decisions)
+   · [▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0005-decisions-disagree-and-commit.html)
+   · [source](./lessons/0005-decisions-disagree-and-commit.html)
+6. **Hard conversations without losing the room**
+   · [▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0006-hard-conversations.html)
+   · [source](./lessons/0006-hard-conversations.html)
+7. **Set direction people can act on** (OKRs)
+   · [▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/examples/teach-leadership/lessons/0007-set-direction.html)
+   · [source](./lessons/0007-set-direction.html)
+
+> Tip: htmlpreview can be slow on first load. For a snappier experience, enable
+> GitHub Pages (below) or just clone and open the files locally.
 
 ### Reference cards
 - **The Clear Handoff** (printable)
@@ -31,6 +52,7 @@ read a lesson, use one of these:
 |---------------|------|
 | [`MISSION.md`](./MISSION.md) | *Why* the learner is studying this — grounds every lesson. |
 | [`RESOURCES.md`](./RESOURCES.md) | Curated high-trust sources (knowledge) + communities (wisdom). |
+| [`GLOSSARY.md`](./GLOSSARY.md) | The course's shared vocabulary — one compressed definition per key idea. |
 | [`lessons/`](./lessons) | Self-contained, interactive HTML lessons, numbered in order. |
 | [`reference/`](./reference) | Compressed, reusable cheat-sheets you return to. |
 | [`assets/`](./assets) | Shared stylesheet/components so every lesson looks consistent. |

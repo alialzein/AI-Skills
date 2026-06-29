@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3 · Radical Candor</title>
+<style>
+:root{--ink:#1a1a1a;--paper:#fdfcf9;--muted:#6b6256;--rule:#e4dccb;--accent:#7a1f1f;--good:#1f6b3a;--bad:#9a2b2b;--soft:#f4efe3}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;line-height:1.5;margin:0;padding:4rem 1.5rem;font-size:19px}
+.wrap{max-width:42rem;margin:0 auto}
+.kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-family:-apple-system,Helvetica,Arial,sans-serif}
+h1{font-size:2.1rem;line-height:1.15;margin:.3rem 0 1rem;font-weight:600}
+h2{font-size:1.3rem;margin:2.4rem 0 .6rem;font-weight:600}
+a{color:var(--accent)}
+.lede{font-size:1.15rem;color:#3a342c}
+blockquote{margin:1.4rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule);color:var(--muted);font-style:italic}
+.card{background:#fff;border:1px solid var(--rule);border-radius:10px;padding:1.1rem 1.3rem;margin:1.2rem 0;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.tool li{margin:.5rem 0}
+.tool b{font-variant:small-caps;letter-spacing:.02em}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cols .card h3{margin:.1rem 0 .5rem;font-size:1rem;font-family:-apple-system,Helvetica,Arial,sans-serif}
+.bad-h{color:var(--bad)}.good-h{color:var(--good)}
+.stat{font-size:.92rem;color:var(--muted)}
+.quiz .q{font-weight:600;margin:.2rem 0 .6rem}
+.opt{display:block;width:100%;text-align:left;cursor:pointer;margin:.4rem 0;padding:.6rem .8rem;border:1px solid var(--rule);border-radius:8px;background:#fff;font:inherit;font-size:.96rem;transition:.15s}
+.opt:hover{background:var(--soft)}
+.opt.correct{border-color:var(--good);background:#eef7f0}
+.opt.wrong{border-color:var(--bad);background:#fbeeee}
+.fb{display:none;margin:.5rem 0 0;font-size:.95rem}
+.fb.show{display:block}
+.task{background:var(--soft);border:1px dashed #cdbf9f;border-radius:10px;padding:1.1rem 1.3rem}
+.foot{margin-top:2.6rem;border-top:1px solid var(--rule);padding-top:1rem;font-size:.92rem;color:var(--muted)}
+@media (max-width:560px){.cols{grid-template-columns:1fr}}
+@media print{body{padding:0;font-size:12pt}.opt{pointer-events:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="kicker">Strong Team Leadership · Lesson 3 of your course</div>
+  <h1>Radical Candor: care personally, challenge directly</h1>
+  <p class="lede">Most kind managers fail their people not by being too harsh but by
+  being too <em>soft</em> — withholding the feedback someone needs to grow. Radical
+  Candor is how you give it without becoming a jerk.</p>
+
+  <h2>Why this, first</h2>
+  <p>Kim Scott built this framework from her years coaching teams at <b>Google</b> and
+  <b>Apple</b>. It maps every piece of feedback on two axes: how much you
+  <b>care personally</b> (vertical) against how much you <b>challenge directly</b>
+  (horizontal).
+  <a href="https://www.radicalcandor.com/our-approach">[Radical Candor]</a>
+  The insight that stings: being "nice" usually means caring without challenging — and
+  that quietly holds your people back.
+  <a href="https://www.gsb.stanford.edu/insights/radical-candor-communication-shift-can-transform-your-career">[Stanford GSB]</a></p>
+  <blockquote>Caring personally is what earns you the right to challenge directly.
+  You do both at once, or you're not really helping.</blockquote>
+  <p>If you lead a small team and tend to swallow hard feedback to keep things pleasant,
+  this lesson is the one that changes your week.</p>
+
+  <h2>The tool: the four quadrants</h2>
+  <p>Cross the two axes and you get four ways feedback can land. Only one is the goal.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="good-h">Radical Candor <span class="stat">care + challenge</span></h3>
+      <p>Honest <em>and</em> kind — the goal.</p>
+      <p class="stat">"I care about you, so here's the hard thing you need to hear."</p>
+    </div>
+    <div class="card">
+      <h3 class="bad-h">Ruinous Empathy <span class="stat">care, no challenge</span></h3>
+      <p>Staying silent to spare feelings — the most common trap for nice managers.</p>
+      <p class="stat">"It's fine, don't worry about it." (It isn't fine.)</p>
+    </div>
+  </div>
+  <div class="cols">
+    <div class="card">
+      <h3 class="bad-h">Obnoxious Aggression <span class="stat">challenge, no care</span></h3>
+      <p>Brutal honesty that doesn't show you care — "front-stabbing".</p>
+      <p class="stat">"That was sloppy." (True, maybe. Cruel, definitely.)</p>
+    </div>
+    <div class="card">
+      <h3 class="bad-h">Manipulative Insincerity <span class="stat">neither</span></h3>
+      <p>Praise to their face, criticism behind their back — passive-aggressive.</p>
+      <p class="stat">"Great work!" → then vents to a colleague later.</p>
+    </div>
+  </div>
+
+  <h2>How to actually say it</h2>
+  <div class="card"><ol class="tool">
+    <li><b>Be specific</b> — situation → the exact behavior → its impact. No labels, no character verdicts.</li>
+    <li><b>Lead from caring</b> — say why you're raising it: you're on their side.</li>
+    <li><b>Give it soon and in private</b> — small and fresh beats a saved-up speech.</li>
+    <li><b>Ask for feedback on yourself first</b> — so candor flows both ways and feels safe.</li>
+  </ol></div>
+
+  <h2>See the difference</h2>
+  <p class="stat">A report is chronically ~10 minutes late to standup.</p>
+  <div class="cols">
+    <div class="card">
+      <h3 class="bad-h">✗ Ruinous empathy</h3>
+      <p>Say nothing. Quietly re-assign their work and hope it sorts itself out.</p>
+      <p class="stat">They never learn it's a problem — until it costs them something bigger.</p>
+    </div>
+    <div class="card">
+      <h3 class="good-h">✓ Radical candor</h3>
+      <p>"I want you to be seen as reliable here — these last four standups you've joined
+      ~10 min late and people have noticed. What's going on?"</p>
+      <p class="stat">Caring → specific behavior → impact → an open question.</p>
+    </div>
+  </div>
+
+  <h2>Check yourself <span class="stat">(retrieval — no peeking)</span></h2>
+  <div class="quiz">
+    <div class="card">
+      <p class="q">1. You avoid telling a struggling report the truth to spare their feelings. That's —</p>
+      <button class="opt" data-c="0">Ruinous empathy, the kind trap</button>
+      <button class="opt" data-c="1">Radical candor done politely</button>
+      <p class="fb"></p>
+    </div>
+    <div class="card">
+      <p class="q">2. Radical Candor asks you to combine caring personally with —</p>
+      <button class="opt" data-c="0">Challenging people directly</button>
+      <button class="opt" data-c="1">Softening every hard truth</button>
+      <p class="fb"></p>
+    </div>
+    <div class="card">
+      <p class="q">3. The best first step to build a candid team is to —</p>
+      <button class="opt" data-c="0">Ask for criticism of yourself</button>
+      <button class="opt" data-c="1">Critique everyone else first</button>
+      <p class="fb"></p>
+    </div>
+  </div>
+
+  <h2 id="task">Your task this week</h2>
+  <div class="task">
+    <p><b>Name the quadrant you default to</b> — be honest, for most kind managers it's
+    ruinous empathy. Then <b>deliver one specific, caring, direct piece of feedback</b>
+    you've been sitting on, using situation → behavior → impact.</p>
+    <p style="margin-bottom:0">Then <b>paste me what you said and how it landed.</b>
+    That's where the skill stops being a diagram and starts being a habit.</p>
+  </div>
+
+  <h2>Go deeper (one source)</h2>
+  <p>Primary source for this lesson: <b>Kim Scott, <em>Radical Candor</em></b> — the full
+  framework, with stories from Google and Apple.
+  <a href="https://www.radicalcandor.com/the-book/">radicalcandor.com</a>. Optionally,
+  the <a href="https://review.firstround.com/radical-candor-the-surprising-secret-to-being-a-good-boss/">First Round Review</a>
+  piece for a fast overview.</p>
+
+  <div class="foot">
+    <p>📌 <b>I'm your teacher — ask me anything.</b> Unsure how to give candid feedback to
+    someone more senior, or how to word something so it lands as caring rather than
+    aggressive? Ask. That's what moves you forward faster than reading alone.</p>
+    <p>Next up (when you're ready): <em>Lesson 4 — Coaching &amp; great 1:1s: say less,
+    ask more.</em></p>
+  </div>
+</main>
+<script>
+document.querySelectorAll('.quiz .card').forEach(card=>{
+  const fb=card.querySelector('.fb');
+  card.querySelectorAll('.opt').forEach(btn=>{
+    if(btn.textContent.trim()===''){btn.style.display='none';return;}
+    btn.addEventListener('click',()=>{
+      const ok=btn.dataset.c==='0';
+      card.querySelectorAll('.opt').forEach(b=>b.disabled=true);
+      btn.classList.add(ok?'correct':'wrong');
+      fb.textContent = ok
+        ? '✓ Correct — that’s the strongest move here. Notice why the other option falls short.'
+        : '✗ Not quite — re-read the section above; the other option is the stronger move.';
+      fb.classList.add('show');
+    });
+  });
+});
+</script>
+</body>
+</html>

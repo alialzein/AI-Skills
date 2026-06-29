@@ -118,10 +118,10 @@ continue, and answer its questions to steer what it teaches next.
 ## Examples
 
 See [`examples/teach-leadership/`](./examples/teach-leadership) for a real, worked
-`teach` workspace ("How to be a strong leader") — mission, a curated resource list,
-an interactive HTML lesson, and a printable reference card. Its
-[README](./examples/teach-leadership/README.md) has one-click links to view the
-rendered lessons.
+`teach` workspace ("How to be a strong leader") — a full 7-lesson course with mission,
+a curated resource list, a glossary, seven interactive HTML lessons, and a printable
+reference card. Its [README](./examples/teach-leadership/README.md) has one-click
+links to view the rendered lessons.
 
 ---
 

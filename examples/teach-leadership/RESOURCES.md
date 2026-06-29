@@ -19,8 +19,17 @@ Curated, high-trust sources. Knowledge for lessons is drawn from here, not from 
 - [Julie Zhuo — *The Making of a Manager*](https://www.juliezhuo.com/book/manager.html)
   The individual-contributor → manager shift, from a first-time manager. Use for:
   fundamentals and mindset reset.
-- [Michael Bungay Stanier — *The Coaching Habit*](https://boxofcrayons.com/the-coaching-habit-book/)
-  Ask, don't tell. Use for: coaching your team instead of solving everything yourself.
+- [Michael Bungay Stanier — *The Coaching Habit*](https://www.amazon.com/Coaching-Habit-Less-Change-Forever/dp/0978440749)
+  Ask, don't tell — the 7 questions (Lesson 4). Coach your team instead of solving
+  everything yourself.
+- [Patterson, Grenny, McMillan & Switzler — *Crucial Conversations*](https://www.goodreads.com/book/show/15014.Crucial_Conversations)
+  Talking when stakes are high (Lesson 6). Use for: hard conversations, conflict,
+  the STATE method, separating facts from story.
+- [Jeff Bezos — 2016 Amazon shareholder letter](https://www.aboutamazon.com/news/company-news/2016-letter-to-shareholders)
+  One-way vs two-way doors, "disagree and commit," deciding at ~70% (Lesson 5).
+- [John Doerr — *Measure What Matters*](https://www.amazon.com/Measure-What-Matters-Google-Foundation/dp/0525536221)
+  OKRs and setting direction (Lesson 7). Use for: focus, alignment, and the
+  Objective + Key Results format.
 
 ## Wisdom (Communities)
 

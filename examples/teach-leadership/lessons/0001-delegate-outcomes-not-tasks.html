@@ -147,8 +147,8 @@ document.querySelectorAll('.quiz .card').forEach(card=>{
       card.querySelectorAll('.opt').forEach(b=>b.disabled=true);
       btn.classList.add(ok?'correct':'wrong');
       fb.textContent = ok
-        ? '✓ Right. The handoff carries the answer, so they don’t need to keep asking you.'
-        : '✗ Not quite — that adds control, not clarity. Clarity up front is what removes the need to hover.';
+        ? '✓ Correct — that’s the strongest move here. Notice why the other option falls short.'
+        : '✗ Not quite — re-read the section above; the other option is the stronger move.';
       fb.classList.add('show');
     });
   });
