@@ -14,12 +14,18 @@ The repo is set up three ways at once, so you can install however you like:
 
 ## Skills in this repo
 
-| Skill   | Invoke   | What it does |
-|---------|----------|--------------|
-| `teach` | `/teach` | Turns the current directory into a stateful teaching workspace and teaches you a topic over multiple sessions — missions, lessons (beautiful HTML), reference sheets, spaced-repetition learning records. |
+Each skill lives in its own self-contained folder under [`skills/`](./skills) with its
+`SKILL.md`, a per-skill **guide** (`README.md` — how to deploy & use it), and its `examples/`
+when it has them.
+
+| Skill | Invoke | What it does | Guide |
+|-------|--------|--------------|-------|
+| [`teach`](./skills/teach) | `/teach` (user-invoked) | Turns the current directory into a stateful teaching workspace and teaches you a topic over multiple sessions — missions, beautiful HTML lessons, reference sheets, spaced-repetition learning records. | [guide](./skills/teach/README.md) |
+| [`production-readiness`](./skills/production-readiness) | auto / `/production-readiness` | Audits a codebase for the things teams reliably miss (untested seams, CI, secrets, API resilience, atomic writes, AI cost caps, observability, backups) and returns a severity-ranked report; can drop a checklist + CI into the repo. | [guide](./skills/production-readiness/README.md) |
 
 > `teach` is vendored from [mattpocock/skills](https://github.com/mattpocock/skills)
-> (`skills/productivity/teach`). See [Attribution](#attribution).
+> (`skills/productivity/teach`). See [Attribution](#attribution). `production-readiness` is
+> original, built with Anthropic's `skill-creator` methodology.
 
 ---
 
@@ -28,23 +34,31 @@ The repo is set up three ways at once, so you can install however you like:
 ```
 AI-Skills/
 ├── .claude-plugin/
-│   ├── plugin.json          # makes this repo an installable plugin
-│   └── marketplace.json     # ...and a marketplace that lists that plugin
+│   ├── plugin.json              # makes this repo an installable plugin
+│   └── marketplace.json         # ...and a marketplace that lists that plugin
 ├── skills/
-│   └── teach/
-│       ├── SKILL.md         # the skill definition (frontmatter + instructions)
-│       ├── MISSION-FORMAT.md
-│       ├── RESOURCES-FORMAT.md
-│       ├── LEARNING-RECORD-FORMAT.md
-│       └── GLOSSARY-FORMAT.md
-├── install.sh               # symlink/copy skills into ~/.claude/skills
+│   ├── teach/
+│   │   ├── SKILL.md             # the skill definition (frontmatter + instructions)
+│   │   ├── *-FORMAT.md          # templates the skill references
+│   │   ├── README.md           # how to deploy & use this skill
+│   │   └── examples/
+│   │       └── leadership-course/   # a full worked example (7-lesson course)
+│   └── production-readiness/
+│       ├── SKILL.md            # lean workflow (progressive disclosure)
+│       ├── references/         # detailed checklist, grep recipes, stack profiles
+│       ├── assets/             # drop-in repo checklist + report template
+│       ├── examples/           # a worked sample review
+│       └── README.md
+├── install.sh                   # symlink/copy skills into ~/.claude/skills
 ├── .claude/
-│   ├── hooks/install-skills.sh   # SessionStart hook (auto-install in web/ephemeral)
-│   └── settings.json.example     # opt-in: enables the hook above
-├── .gitignore
-├── LICENSE
-└── README.md
+│   ├── hooks/install-skills.sh  # SessionStart hook (auto-install in web/ephemeral)
+│   └── settings.json.example    # opt-in: enables the hook above
+├── .gitignore · LICENSE · README.md
 ```
+
+Convention: a skill is any `skills/<name>/` folder containing a `SKILL.md`. Anything else in
+the folder (`README.md`, `examples/`, `references/`, `assets/`) is for humans or loaded
+on demand — it doesn't interfere with skill discovery.
 
 ---
 
@@ -117,11 +131,15 @@ continue, and answer its questions to steer what it teaches next.
 
 ## Examples
 
-See [`examples/teach-leadership/`](./examples/teach-leadership) for a real, worked
-`teach` workspace ("How to be a strong leader") — a full 7-lesson course with mission,
-a curated resource list, a glossary, seven interactive HTML lessons, and a printable
-reference card. Its [README](./examples/teach-leadership/README.md) has one-click
-links to view the rendered lessons.
+Examples live **with their skill**:
+
+- [`skills/teach/examples/leadership-course/`](./skills/teach/examples/leadership-course) —
+  a real, worked `teach` workspace ("How to be a strong leader"): a full 7-lesson course with
+  mission, curated resources, a glossary, seven interactive HTML lessons, and a printable
+  reference card. Its [README](./skills/teach/examples/leadership-course/README.md) has
+  one-click links to view the rendered lessons.
+- [`skills/production-readiness/examples/sample-review.md`](./skills/production-readiness/examples/sample-review.md) —
+  a worked production-readiness review showing the report shape and severity ranking.
 
 ---
 
@@ -138,8 +156,11 @@ links to view the rendered lessons.
    ```
    (`name` must be lowercase, match the folder, and be ≤64 chars. Add
    `disable-model-invocation: true` for a user-only `/your-skill` command.)
-2. Add a row to the [Skills table](#skills-in-this-repo) above.
-3. Re-run `./install.sh` (or `/plugin marketplace update ai-skills` for plugin users).
+2. Add a `skills/<your-skill>/README.md` (deploy + use guide) and, if you have one, an
+   `examples/` folder beside `SKILL.md`. Put long reference material in `references/` and
+   templates/output files in `assets/` so `SKILL.md` stays lean (progressive disclosure).
+3. Add a row to the [Skills table](#skills-in-this-repo) above.
+4. Re-run `./install.sh` (or `/plugin marketplace update ai-skills` for plugin users).
 
 ---
 

@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "ai-skills",
-      "description": "A growing collection of personal Agent Skills (currently: teach).",
+      "description": "A growing collection of personal Agent Skills (teach, production-readiness).",
       "source": "./",
       "version": "0.1.0",
       "author": {
