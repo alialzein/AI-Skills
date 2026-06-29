@@ -51,3 +51,48 @@ Add harder, *non-obvious* test cases where a baseline is more likely to miss —
 cron-vs-manual concurrency race, a webhook with no polling fallback, an encryption-key
 rotation that would orphan data, or a missing CI drift-guard on hand-maintained DB types.
 That's where the skill should out-perform an unaided model.
+
+---
+
+# Iteration 2 — harder cases + model-tier comparison
+
+Built one realistic billing service (`ledgerd`) that *looks* well-built (CI ✅, tests ✅,
+secrets in env ✅) but hides **5 subtle structural gaps** — non-atomic/non-idempotent charge,
+cron-vs-manual concurrency race, encryption-key rotation that orphans card tokens, webhook
+with no polling fallback, and hand-maintained DB types already drifted from a migration — plus
+**2 red herrings** (a parameterized query and a log-and-rethrow catch) to test precision. The
+prompt even primed the reviewer with "I think it's in good shape."
+
+## On a frontier model (Opus) — 2× with-skill vs 2× baseline
+| Metric | With skill | Baseline |
+|--------|-----------|----------|
+| Recall on the 5 subtle gaps | **5.0 / 5** | **5.0 / 5** |
+| Precision (red herrings not mis-flagged) | 2/2 | 2/2 |
+
+**Tied at ceiling.** Unaided Opus catches the subtle structural gaps too. (My keyword grader
+first *looked* like with-skill had better precision; on inspection that was an artifact — every
+"injection"/"swallow" match was the report *clearing* the red herring as a strength, not
+flagging it. Corrected: no false flags by anyone.)
+
+## On a weaker/faster model (Haiku) — 2× with-skill vs 2× baseline
+| Metric | With skill | Baseline |
+|--------|-----------|----------|
+| Avg recall on the 5 subtle gaps | **5.0 / 5** | **4.5 / 5** |
+| Report thoroughness (chars) | ~18–24k | ~12–15k |
+
+Here the skill earns its keep: a baseline Haiku run **missed the encryption-key-rotation gap**
+(the most operational, least code-visible one) — the with-skill runs caught all five and
+produced more thorough, structured reports. Small sample, but directionally what you'd expect.
+
+## Bottom line
+- **Triggering:** 100% — ship the description as-is.
+- **Detection on a frontier model:** the skill ≈ matches an already-strong baseline; its value
+  is **consistency, scope discipline, and turning a review into repo artifacts** (checklist +
+  CI), not extra finds.
+- **Detection on a weaker model:** the skill gives a **small real recall gain** on the most
+  operational gaps and makes the output more complete — which is exactly where a checklist
+  should help.
+
+No skill/description changes were warranted by iteration 2 — the content that caught the gap a
+baseline missed (§4 encryption-key rotation) is already in the detailed checklist. Doing
+fiddly edits here would be overfitting.
