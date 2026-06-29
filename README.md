@@ -115,6 +115,16 @@ continue, and answer its questions to steer what it teaches next.
 
 ---
 
+## Examples
+
+See [`examples/teach-leadership/`](./examples/teach-leadership) for a real, worked
+`teach` workspace ("How to be a strong leader") — mission, a curated resource list,
+an interactive HTML lesson, and a printable reference card. Its
+[README](./examples/teach-leadership/README.md) has one-click links to view the
+rendered lessons.
+
+---
+
 ## Adding a new skill
 
 1. Create `skills/<your-skill>/SKILL.md` with frontmatter:
