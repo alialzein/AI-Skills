@@ -209,6 +209,12 @@ brings its *content* folders but not its empty **working** folders. Create any m
 `ClientPortal\Temp`** (upload staging — the Cost Sheet import `SaveAs`-es here; a missing folder
 throws `DirectoryNotFoundException`).
 
+Also **`C:\TempEmails`** — the Email Repository service's attachment staging folder. Miss it and the
+service marks *every* emailed rate file Rejected with zero attachments (`DirectoryNotFoundException`,
+Case 8). It needs its **schema files** too, or files then download and convert but fail "Schema
+Validation Failed" on a missing `CostPlanItem.xsd` — copy them in alongside creating the folder:
+`copy /Y "C:\inetpub\BillingWeb\Models\*.xsd" "C:\TempEmails\"`.
+
 **Write permission is the other half.** A newly-created folder inherits only SYSTEM/Admins, so
 the app pool (B-PAL / SMS Portal / Client Portal all run as **NetworkService**) still can't write
 — the *next* error is `UnauthorizedAccessException`. The estate's working folders are made

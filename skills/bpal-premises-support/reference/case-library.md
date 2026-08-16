@@ -291,6 +291,53 @@ different host node** — cheap for them, and the fastest discriminator between 
 
 ---
 
+## Case 8 — email auto-import rejects every file after a migration
+
+**Presents as:** the Email Repository service (`MontyHolding.Billing.EmailRepositoryService`) is
+running and pulling mail, but every emailed rate/coverage file shows **Rejected** with an empty
+sub-table — no vendor, no attachments. Starts the moment a client is cut over to a new server.
+
+**Method — narrow where it fails, then read the service's own log:**
+
+1. The service writes the parent email row but no `EmailRepositoryAttachment` rows, so the mailbox
+   read and the DB write both work — the failure is *during attachment handling*. Confirm by
+   comparing one sender across the cutover: 5 attachments before, 0 after = a clean migration
+   regression, not a vendor/data problem.
+2. Read the service's **own** entries in the Application event log (source
+   `MontyHolding.Billing.EmailRepositoryService`). It names the fault outright:
+   `System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\TempEmails\…'`.
+3. Every historical attachment's `Filepath`/`ConvertedFilepath` (in `*_BillingDB.dbo.EmailRepositoryAttachment`)
+   is under `C:\TempEmails` — the service streams each attachment there before saving/converting.
+   The folder was never created on the new box, so every email is "ignored".
+
+**Two misses, not one:**
+
+- **The working folder `C:\TempEmails`** — missing. Create it (SYSTEM inherits Full for the
+  LocalSystem service; add `NetworkService` + `IIS_IUSRS` Modify for the web "Restart" path). It is
+  now a Stage-6 folder in `migration.md`.
+- **The `.xsd` schema files that live in that folder** — also missing. Once the folder exists,
+  files download and convert but fail **"Schema Validation Failed"** →
+  `Could not find file 'C:\TempEmails\CostPlanItem.xsd'`. The service validates each file against an
+  XSD in its working folder; the masters live in `C:\inetpub\BillingWeb\Models\` (`CostPlanItem.xsd`,
+  `RatePlanItem.xsd`, `MNPCostPlanItem.xsd`, … ~19). Copy them all in:
+  `copy /Y "C:\inetpub\BillingWeb\Models\*.xsd" "C:\TempEmails\"`. Attachment `Status` then moves
+  from **4 (converted-but-schema-failed)** to **2 (imported)**.
+
+**Recovering the already-rejected backlog:** the attachment bytes were never downloaded, so the UI
+**Restart** button is the recovery path — it re-ingests the email from the mailbox (marks it unread
+→ service re-pulls → downloads → validates → imports). It is asynchronous (~1–2 min; a transient
+`MailBee.EwsMail` Exchange error just needs a second click) and it creates a **fresh** row while
+leaving the old Rejected one behind — clean up the leftover `Status=1` / zero-attachment rows
+afterward. A raw DB `DELETE` of the rejected row does **not** recover it: the mailbox copy is
+already marked read, so the service won't re-pull it.
+
+**Lesson:** when a migrated service "runs but rejects/fails everything," read *its own* error log
+first — it usually names the exact missing file, folder, or permission. Migration misses cluster in
+**non-install runtime folders and their contents** (`C:\TempEmails` + its `.xsd` files), never in
+the app binaries.
+
+---
+
 ## Security findings — report separately, always check
 
 Seen on a premises billing server, all at once: 1433 and 3389 exposed to the internet; 571

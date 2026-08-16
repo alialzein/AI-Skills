@@ -179,6 +179,7 @@ Check these before theorising, because they repeat across clients:
 | SQL starves IIS / services after go-live | `max server memory` left unlimited on a box that also runs IIS + ~35 services + SSIS — cap it (§17) |
 | Upload / Cost-Sheet / report `SaveAs` throws `DirectoryNotFound` then `AccessDenied` | missing `BillingWeb\Temp` working folder, and/or the app pool (`NetworkService`) has no `Modify` on it (migration Stage 6) |
 | After a migration, `"Failed to open ..._BPalCDRDB"` every ~2 min | the multi-TB CDR **archive** isn't restored yet — not a login fault |
+| Email auto-import marks **every** file Rejected after a migration (empty sub-table, 0 attachments) | Email Repository service can't stage attachments — working folder `C:\TempEmails` missing → `DirectoryNotFoundException`; after creating it, files fail **Schema Validation** because the `.xsd` schemas that also live there are missing (copy from `BillingWeb\Models`) — Case 8 |
 
 ## Migrating a client to a new server
 
