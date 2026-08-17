@@ -72,6 +72,18 @@ Biggest real tables: `CostPlanItem` (31M), `Integration_Master_Agent` (8.6M), `R
 *(+ ~45 more: notification/invoice/daily-report toggles, vendor-cost auto-import config,
 timezone + alert flags).*
 
+### User  *(billing-application users; do not confuse with SQL logins)*
+`UserId` **PK**, `Name`, `Username`, `Email`, `MobileNumber`, `AccountId`, `RoleId`,
+`AccountProfileId`, `PartnerId`, `AccountManagerId`, `Active`(bit), `Locked`(bit),
+`TwoFactorEnabled`(bit), `IsGoogleAuthenticatorEnabled`(bit), `DefaultTFA`(int),
+`LoginAttempts`(int), `OTPAttempts`(int), `OTPSend`(int), `CreatedDate`, `LastLogin`,
+`LastPasswordChange`.
+
+The table also contains authentication material and binary/device fields. Never include
+`Password`, `Token`, `GoogleAuthenticatorSecretKey`, `SecurityToken`, `PasswordChangeKey`,
+`DeviceId`, or `Photo` in a routine user inventory or support report. See
+`diagnostic-queries.md` §21 for a safe projection.
+
 ### Operator
 `OperatorId` **PK**, `CountryId` (→ Country), `ZoneId`, `Name`, `MobileCountryCode`(int),
 `MobileNetworkCode`(nvarchar), `Active`(bit), `IsExclusive`(bit), `IsUpdated`(bit),

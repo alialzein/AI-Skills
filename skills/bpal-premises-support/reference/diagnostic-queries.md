@@ -545,3 +545,51 @@ offset). There was never a SQL-vs-OS gap on Contoso; `net time` manufactured a f
 The timezone is cached independently by the OS, the SQL engine, and **each .NET process** — so a
 running IIS `w3wp` or Windows service keeps the old offset until it is recycled/restarted, even
 after the OS is already on the new zone.
+
+---
+
+## 21. Premises user inventory without authentication secrets
+
+Run this in `<Client>_BillingDB`. A Windows administrator credential that grants SMB access does
+**not** authorize reading an application connection string or reusing its embedded SQL login.
+Use SQL access explicitly supplied or approved by the operator. If SQL is not reachable, hand the
+query to the operator to run in SSMS.
+
+Confirm the database and table before reading rows:
+
+```sql
+SELECT DB_NAME() AS current_database;
+
+SELECT s.name AS schema_name, t.name AS table_name
+FROM sys.tables t
+JOIN sys.schemas s ON s.schema_id = t.schema_id
+WHERE t.name = 'User';
+```
+
+Return operational fields only. Deliberately exclude `Password`, `Token`, authenticator secrets,
+password-reset keys, device identifiers, and `Photo`:
+
+```sql
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET LOCK_TIMEOUT 8000;
+
+SELECT u.UserId, u.Name, u.Username, u.AccountId, u.RoleId,
+       u.Active, u.Locked, u.TwoFactorEnabled,
+       u.LastLogin, u.CreatedDate, u.LastPasswordChange
+FROM dbo.[User] u WITH (NOLOCK)
+ORDER BY u.Username;
+```
+
+For the common support question "which active users are locked?", use the same safe projection:
+
+```sql
+SELECT u.UserId, u.Name, u.Username, u.AccountId, u.RoleId,
+       u.Active, u.Locked, u.TwoFactorEnabled,
+       u.LastLogin, u.CreatedDate, u.LastPasswordChange
+FROM dbo.[User] u WITH (NOLOCK)
+WHERE u.Active = 1 AND u.Locked = 1
+ORDER BY u.Username;
+```
+
+An empty result means there are currently no locked active application users. It says nothing
+about SQL-login lockout or Windows-account state; those are separate identity stores.
