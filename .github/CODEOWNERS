@@ -1,0 +1,6 @@
+# CODEOWNERS ? GitHub auto-requests review from the listed owner on changes to
+# matching paths. With a branch ruleset ("Require a pull request before merging"
+# + "Require review from Code Owners"), this blocks merge to main until the
+# owner approves.
+
+/skills/bpal-premises-support/   @alialzein
