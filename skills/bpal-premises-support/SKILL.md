@@ -212,6 +212,14 @@ The user relays findings to a DBA team and to clients, so:
   survive into the summary.
 - Separate what is *measured* from what is *expected*.
 
+## Contribute solved cases back
+
+This skill is a shared team library (`github.com/alialzein/AI-Skills`). When an investigation
+ends in a root cause or lesson **not already in the case library** — or shows an existing case
+to be wrong or incomplete — offer to write it up: one row in the recurring-faults table above
+plus a full entry in `reference/case-library.md`, following the template and sanitization rules
+in `CONTRIBUTING.md`, delivered as a PR. A fault captured once is solved for every client.
+
 ## Related artifacts on this machine
 
 - `C:\Users\ali.zein\Desktop\BPal-SQL-Troubleshooting-Runbook.html` — tabbed runbook of
