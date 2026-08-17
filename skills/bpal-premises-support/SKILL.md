@@ -180,6 +180,7 @@ Check these before theorising, because they repeat across clients:
 | Upload / Cost-Sheet / report `SaveAs` throws `DirectoryNotFound` then `AccessDenied` | missing `BillingWeb\Temp` working folder, and/or the app pool (`NetworkService`) has no `Modify` on it (migration Stage 6) |
 | After a migration, `"Failed to open ..._BPalCDRDB"` every ~2 min | the multi-TB CDR **archive** isn't restored yet — not a login fault |
 | Email auto-import marks **every** file Rejected after a migration (empty sub-table, 0 attachments) | Email Repository service can't stage attachments — working folder `C:\TempEmails` missing → `DirectoryNotFoundException`; after creating it, files fail **Schema Validation** because the `.xsd` schemas that also live there are missing (copy from `BillingWeb\Models`) — Case 8 |
+| After changing the server timezone, SQL Agent jobs silently stop firing | Agent caches each schedule's `next_run` and won't move a *future* value backward on restart — toggle every enabled schedule off→on to recompute (`diagnostic-queries.md` §20). TZ is also cached per .NET process (OS / SQL / each `w3wp` + service) — recycle app pools & restart services or they keep the old offset |
 
 ## Migrating a client to a new server
 

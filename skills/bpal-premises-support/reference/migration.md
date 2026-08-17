@@ -247,3 +247,10 @@ server. Keep the old box intact until the new one is proven.
 - **`bin\*.dll.config` are inert** — never loaded at runtime; foreign creds in them are harmless.
 - **Service name ≠ display name** (`MontyHolding.Billing.*` vs `B-PAL.*`); target by name.
 - **Confirm the exe exists on the new box** at the old server's binPath before creating a service.
+- **Standardising the new box to UTC breaks two things, differently.** SQL Agent caches each
+  schedule's `next_run` and won't pull a *future* value backward, so jobs stop firing (fix: toggle
+  schedules off→on — `diagnostic-queries.md` §20). Separately, timezone is cached per **.NET
+  process** (`TimeZoneInfo.Local`): IIS `w3wp` and any running Billing/BondSMS service keep the
+  *old* offset until recycled/restarted — the web app read +2 h while OS + SQL were already UTC.
+  Read the box's real clock with `tzutil /g` + `echo %TIME%` on the box, never `net time \\host`
+  (it returns a domain source and fabricated a false 3-hour gap here).

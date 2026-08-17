@@ -514,3 +514,34 @@ Fix (DBA): drop `RETENTION_WINDOW` (`catalog.configure_catalog N'RETENTION_WINDO
 then **purge `internal.operations` oldest-first in small batches** in a maintenance window (the
 built-in `SSIS Server Maintenance Job` times out at this size), then `DBCC SHRINKFILE`. The
 deployed packages themselves are tiny — the history is disposable.
+
+## 20. Refresh SQL Agent schedules after a timezone change
+
+Change the server timezone and **SQL Agent jobs quietly stop firing.** The Agent caches each
+schedule's `next_run_date`/`next_run_time` and will not move a *future* cached value **backward** —
+restarting the Agent does **not** fix it. Force a recompute against the new clock by toggling every
+enabled schedule off then on:
+
+```sql
+DECLARE @sid int;
+DECLARE c CURSOR LOCAL FAST_FORWARD FOR
+  SELECT DISTINCT s.schedule_id
+  FROM msdb.dbo.sysschedules s
+  JOIN msdb.dbo.sysjobschedules js ON js.schedule_id = s.schedule_id
+  WHERE s.enabled = 1;
+OPEN c; FETCH NEXT FROM c INTO @sid;
+WHILE @@FETCH_STATUS = 0
+BEGIN
+  EXEC msdb.dbo.sp_update_schedule @schedule_id=@sid, @enabled=0;
+  EXEC msdb.dbo.sp_update_schedule @schedule_id=@sid, @enabled=1;
+  FETCH NEXT FROM c INTO @sid;
+END
+CLOSE c; DEALLOCATE c;
+```
+
+Confirm the box's **own** clock first — `tzutil /g` and `echo %TIME%` via `xp_cmdshell` **on the
+box**, not `net time \\host` (which returns a *domain* time source and will invent a phantom
+offset). There was never a SQL-vs-OS gap on Contoso; `net time` manufactured a false 3-hour one.
+The timezone is cached independently by the OS, the SQL engine, and **each .NET process** — so a
+running IIS `w3wp` or Windows service keeps the old offset until it is recycled/restarted, even
+after the OS is already on the new zone.
