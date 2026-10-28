@@ -1,0 +1,8 @@
+{
+  "name": "database-migration-authoring",
+  "description": "Write the migration file itself.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

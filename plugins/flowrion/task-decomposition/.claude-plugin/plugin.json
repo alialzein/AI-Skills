@@ -1,0 +1,8 @@
+{
+  "name": "task-decomposition",
+  "description": "Break the work into steps a builder can follow and a reviewer can check.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

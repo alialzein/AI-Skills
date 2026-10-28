@@ -1,0 +1,8 @@
+{
+  "name": "test-planning",
+  "description": "Decide how the change will be proven before writing it.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

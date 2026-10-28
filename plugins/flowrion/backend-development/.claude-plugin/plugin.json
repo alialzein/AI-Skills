@@ -1,0 +1,8 @@
+{
+  "name": "backend-development",
+  "description": "Change server code so that it stays correct, observable and safe.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

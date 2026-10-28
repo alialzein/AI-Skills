@@ -1,0 +1,8 @@
+{
+  "name": "api-design",
+  "description": "Design an interface that callers can use correctly without reading its code.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}
