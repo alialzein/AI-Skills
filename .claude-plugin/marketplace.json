@@ -18,6 +18,186 @@
         "email": "Alizein1997@gmail.com"
       },
       "category": "productivity"
+    },
+    {
+      "name": "requirements-analysis",
+      "source": "./plugins/flowrion/requirements-analysis",
+      "description": "Turn a request into a problem statement that someone else could build from.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "codebase-exploration",
+      "source": "./plugins/flowrion/codebase-exploration",
+      "description": "Learn how the repository works before you change it. Read, do not write.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "acceptance-criteria",
+      "source": "./plugins/flowrion/acceptance-criteria",
+      "description": "Write criteria a reviewer can check without asking you what you meant.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "api-design",
+      "source": "./plugins/flowrion/api-design",
+      "description": "Design an interface that callers can use correctly without reading its code.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "database-design",
+      "source": "./plugins/flowrion/database-design",
+      "description": "Shape data so that it stays correct under concurrency and change.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "architecture-planning",
+      "source": "./plugins/flowrion/architecture-planning",
+      "description": "Record the decision before the code, so that reviewers judge the approach and not only the diff.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "task-decomposition",
+      "source": "./plugins/flowrion/task-decomposition",
+      "description": "Break the work into steps a builder can follow and a reviewer can check.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "test-planning",
+      "source": "./plugins/flowrion/test-planning",
+      "description": "Decide how the change will be proven before writing it.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "migration-planning",
+      "source": "./plugins/flowrion/migration-planning",
+      "description": "Change a schema without stopping the service or losing data.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "unit-testing",
+      "source": "./plugins/flowrion/unit-testing",
+      "description": "Write tests that fail for the right reason and pass for the right reason.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "frontend-development",
+      "source": "./plugins/flowrion/frontend-development",
+      "description": "Build interfaces that work for everyone who uses them.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "backend-development",
+      "source": "./plugins/flowrion/backend-development",
+      "description": "Change server code so that it stays correct, observable and safe.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "database-migration-authoring",
+      "source": "./plugins/flowrion/database-migration-authoring",
+      "description": "Write the migration file itself.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "documentation",
+      "source": "./plugins/flowrion/documentation",
+      "description": "Write for the reader who has to act on it.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "code-review",
+      "source": "./plugins/flowrion/code-review",
+      "description": "Review the change as the person who will maintain it.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "security-review",
+      "source": "./plugins/flowrion/security-review",
+      "description": "Look for the ways the change can be abused.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "performance-evaluation",
+      "source": "./plugins/flowrion/performance-evaluation",
+      "description": "Check that the change does not make the system slower or costlier than it must be.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
+    },
+    {
+      "name": "risk-classification",
+      "source": "./plugins/flowrion/risk-classification",
+      "description": "Judge how much harm the change could do if it is wrong, so the right people review it.",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "Flowrion"
+      }
     }
   ]
 }

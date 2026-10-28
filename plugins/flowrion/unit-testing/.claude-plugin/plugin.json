@@ -1,0 +1,8 @@
+{
+  "name": "unit-testing",
+  "description": "Write tests that fail for the right reason and pass for the right reason.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}
