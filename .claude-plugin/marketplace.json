@@ -93,7 +93,7 @@
       "name": "test-planning",
       "source": "./plugins/flowrion/test-planning",
       "description": "Decide how the change will be proven before writing it.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "development",
       "author": {
         "name": "Flowrion"
@@ -113,7 +113,7 @@
       "name": "unit-testing",
       "source": "./plugins/flowrion/unit-testing",
       "description": "Write tests that fail for the right reason and pass for the right reason.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "development",
       "author": {
         "name": "Flowrion"
@@ -163,7 +163,7 @@
       "name": "code-review",
       "source": "./plugins/flowrion/code-review",
       "description": "Review the change as the person who will maintain it.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "development",
       "author": {
         "name": "Flowrion"
