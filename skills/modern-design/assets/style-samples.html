@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modern Style Samples</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a picker row, then ONE sample dashboard (desktop + phone) redrawn in the chosen style, then what the style is good and bad at. */
+:root {
+  --page: #f4f5f9; --page-ink: #15182e; --page-ink2: #555a78; --page-line: #d9dcea; --page-card: #ffffff; --page-accent: #3550e6;
+  --ui: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --page: #0e1020; --page-ink: #eef0fb; --page-ink2: #a3a9c9; --page-line: #2a2f4c; --page-card: #171a30; --page-accent: #8ea2ff; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --page: #0e1020; --page-ink: #eef0fb; --page-ink2: #a3a9c9; --page-line: #2a2f4c; --page-card: #171a30; --page-accent: #8ea2ff; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--page-ink); font: 15px/1.5 var(--ui);
+  padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+h1 { font-size: clamp(1.5rem, 3.4vw, 2rem); line-height: 1.15; margin: 0; text-wrap: balance; }
+.lead { color: var(--page-ink2); max-width: 68ch; margin: 0; }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pick { font: inherit; font-weight: 600; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--page-line); background: var(--page-card); color: var(--page-ink); cursor: pointer; }
+.pick[aria-pressed="true"] { background: var(--page-accent); border-color: var(--page-accent); color: #fff; }
+.pick:focus-visible, .mode:focus-visible { outline: 2px solid var(--page-accent); outline-offset: 2px; }
+.mode { font: inherit; padding: 7px 12px; border-radius: 10px; border: 1px solid var(--page-line); background: var(--page-card); color: var(--page-ink); cursor: pointer; }
+.mode[aria-pressed="true"] { border-color: var(--page-accent); box-shadow: inset 0 0 0 1px var(--page-accent); }
+.spacer { flex: 1; }
+.about { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.about div { background: var(--page-card); border: 1px solid var(--page-line); border-radius: 14px; padding: 12px 14px; min-width: 0; }
+.about b { display: block; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--page-ink2); margin-bottom: 4px; }
+@media (max-width: 760px) { .about { grid-template-columns: minmax(0, 1fr); } }
+.note { color: var(--page-ink2); font-size: .9rem; margin: 0; }
+
+/* ================= the sample ================= */
+.pv { --bg: #f1f2fb; --ground: none; --card: #fff; --card2: #f3f4f8; --line: #e3e5ee; --ink: #14183a; --ink2: #555b80; --accent: #3b5bf5; --on-accent: #fff;
+  --r: 14px; --rs: 10px; --shadow: 0 1px 2px rgb(20 30 80 / .06); --blur: none; --gap: 12px; --pad: 14px; --fs: 13px; --num: 22px; --hero-num: 30px;
+  --hero-bg: var(--accent); --hero-ink: var(--on-accent); --good: #0e9f7e;
+  display: grid; grid-template-columns: minmax(0, 1fr) 248px; gap: 16px; align-items: stretch;
+  font-size: var(--fs); color: var(--ink); }
+@media (max-width: 900px) { .pv { grid-template-columns: minmax(0, 1fr); } .phone { max-width: 280px; margin: 0 auto; width: 100%; } }
+.desk, .phone { background: var(--ground), var(--bg); border-radius: 18px; border: 1px solid var(--page-line); overflow: hidden; position: relative; }
+.desk { display: grid; grid-template-columns: 150px minmax(0, 1fr); min-height: 440px; }
+@media (max-width: 620px) { .desk { grid-template-columns: minmax(0, 1fr); } .sb { display: none; } }
+.surf { background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
+.sb { padding: 12px 8px; display: flex; flex-direction: column; gap: 3px; border-inline-end: 1px solid var(--line); background: var(--card); min-width: 0; }
+.brand { font-weight: 700; padding: 2px 8px 10px; font-size: 14px; }
+.nv { display: flex; align-items: center; gap: 8px; padding: 7px 8px; border-radius: var(--rs); color: var(--ink2); font-weight: 500; }
+.nv svg, .tabs svg, .tb svg, .ptb svg { width: 16px; height: 16px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.nv.on { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-weight: 600; }
+.col { display: flex; flex-direction: column; min-width: 0; }
+.tb { display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 12px; border-bottom: 1px solid var(--line); background: var(--card); color: var(--ink2); }
+.srch { flex: 1; max-width: 260px; height: 30px; border-radius: 999px; border: 1px solid var(--line); background: var(--card2); display: flex; align-items: center; gap: 6px; padding: 0 10px; font-size: 12px; min-width: 0; white-space: nowrap; overflow: hidden; }
+.content { padding: var(--gap); display: flex; flex-direction: column; gap: var(--gap); min-width: 0; }
+.head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.head h3 { margin: 0; font-size: 18px; line-height: 1.2; }
+.head span { color: var(--ink2); font-size: 12px; }
+.btn { margin-inline-start: auto; font: inherit; font-weight: 600; font-size: 12px; padding: 7px 12px; border-radius: 999px; border: 0; background: var(--accent); color: var(--on-accent); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.card { border-radius: var(--r); padding: var(--pad); min-width: 0; }
+.hero { grid-column: span 3; background: var(--hero-bg); color: var(--hero-ink); border-color: transparent; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; position: relative; overflow: hidden; }
+.hero small, .tile small { display: block; font-size: 11px; opacity: .85; }
+.hero strong { font-size: var(--hero-num); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.chip { display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: rgb(255 255 255 / .22); }
+.hero svg { width: 46%; max-width: 220px; height: 44px; fill: none; stroke: currentColor; stroke-width: 2; opacity: .9; }
+.tile small { color: var(--ink2); opacity: 1; }
+.tile strong { font-size: var(--num); font-variant-numeric: tabular-nums; }
+.tile em { font-style: normal; font-size: 11px; font-weight: 600; color: var(--good); margin-inline-start: 6px; }
+.chart { grid-column: span 2; }
+.chart h4, .list h4 { margin: 0 0 8px; font-size: 12px; font-weight: 600; }
+.bars { display: flex; align-items: flex-end; gap: 7px; height: 84px; }
+.bars i { flex: 1; border-radius: 5px 5px 2px 2px; background: color-mix(in srgb, var(--accent) 55%, transparent); transform-origin: bottom; animation: grow .5s cubic-bezier(.2,.8,.2,1) both; }
+.bars i:last-child { background: var(--accent); }
+@keyframes grow { from { transform: scaleY(0); } }
+.rowi { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 12px; }
+.rowi:last-child { border-bottom: 0; }
+.rowi span:last-child { color: var(--ink2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rowi span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* phone */
+.phone { display: flex; flex-direction: column; min-height: 440px; }
+.ptb { display: flex; align-items: center; justify-content: space-between; height: 42px; padding: 0 12px; font-weight: 700; border-bottom: 1px solid var(--line); background: var(--card); }
+.pc { flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 10px; padding-bottom: 74px; }
+.pc .hero { grid-column: auto; flex-direction: column; align-items: flex-start; }
+.pc .hero svg { width: 100%; max-width: none; height: 30px; }
+.row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.tabs { position: absolute; inset-inline: 0; bottom: 0; height: 56px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: var(--card); border-top: 1px solid var(--line); color: var(--ink2); }
+.tabs span { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 9.5px; position: relative; }
+.tabs span.on { color: var(--accent); font-weight: 600; }
+
+/* ---------- 1. Aurora Glass ---------- */
+.pv[data-style="glass"] { --bg: #e9ecfa; --ground: radial-gradient(60% 55% at 10% 6%, rgb(110 128 255 / .58), transparent 70%), radial-gradient(55% 60% at 95% 30%, rgb(52 196 176 / .46), transparent 70%), radial-gradient(60% 50% at 50% 100%, rgb(184 138 255 / .44), transparent 70%);
+  --card: rgb(255 255 255 / .46); --card2: rgb(255 255 255 / .4); --line: rgb(255 255 255 / .8); --r: 18px; --rs: 12px; --shadow: 0 10px 30px rgb(40 50 120 / .12); --blur: blur(16px) saturate(1.5);
+  --hero-bg: linear-gradient(135deg, #3b5bf5, #7a5cf0); }
+.pv[data-style="glass"][data-mode="dark"] { --bg: #0c0f24; --ground: radial-gradient(60% 55% at 10% 6%, rgb(84 76 214 / .5), transparent 70%), radial-gradient(55% 60% at 95% 30%, rgb(18 140 132 / .36), transparent 70%), radial-gradient(60% 50% at 50% 100%, rgb(120 60 200 / .3), transparent 70%);
+  --card: rgb(30 36 78 / .55); --card2: rgb(30 36 78 / .45); --line: rgb(170 185 255 / .18); --ink: #f1f3ff; --ink2: #b4bbe2; --accent: #7d95ff; --shadow: 0 10px 30px rgb(0 0 0 / .35); --good: #3fd0b2; }
+.pv[data-style="glass"] .sb, .pv[data-style="soft"] .sb { margin: 10px; margin-inline-end: 0; border-radius: var(--r); border: 1px solid var(--line); box-shadow: var(--shadow); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
+.pv[data-style="glass"] .tb, .pv[data-style="soft"] .tb { margin: 10px 10px 0; border-radius: var(--r); border: 1px solid var(--line); box-shadow: var(--shadow); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
+.pv[data-style="glass"] .tabs, .pv[data-style="neon"] .tabs, .pv[data-style="soft"] .tabs, .pv[data-style="bento"] .tabs { inset-inline: 10px; bottom: 10px; border-radius: 28px; border: 1px solid var(--line); box-shadow: var(--shadow); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
+.pv[data-style="glass"] .ptb { margin: 8px 8px 0; border-radius: 16px; border: 1px solid var(--line); -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur); }
+
+/* ---------- 2. Clean Minimal ---------- */
+.pv[data-style="minimal"] { --bg: #fafafa; --card: #fff; --card2: #f5f5f6; --line: #e7e7ea; --ink: #111114; --ink2: #6b6b76; --accent: #4f46e5; --r: 10px; --rs: 7px; --shadow: none; --hero-bg: #fff; --hero-ink: #111114; }
+.pv[data-style="minimal"][data-mode="dark"] { --bg: #0b0b0d; --card: #131316; --card2: #1a1a1f; --line: #26262c; --ink: #f2f2f4; --ink2: #9a9aa6; --accent: #8b85ff; --hero-bg: #131316; --hero-ink: #f2f2f4; --good: #34c7a4; }
+.pv[data-style="minimal"] .hero, .pv[data-style="dense"] .hero { border-color: var(--line); }
+.pv[data-style="minimal"] .hero svg, .pv[data-style="dense"] .hero svg { stroke: var(--accent); }
+.pv[data-style="minimal"] .chip, .pv[data-style="dense"] .chip { background: color-mix(in srgb, var(--good) 14%, transparent); color: var(--good); }
+.pv[data-style="minimal"] .btn { border-radius: 8px; }
+
+/* ---------- 3. Soft Depth ---------- */
+.pv[data-style="soft"] { --bg: #e8ecf5; --card: #eef2f9; --card2: #e4e9f3; --line: rgb(255 255 255 / .7); --ink: #27304d; --ink2: #66708f; --accent: #5b7cfa; --r: 24px; --rs: 14px;
+  --shadow: 7px 7px 18px rgb(160 172 198 / .55), -6px -6px 14px rgb(255 255 255 / .9); --hero-bg: linear-gradient(145deg, #6f8cff, #5b7cfa); }
+.pv[data-style="soft"][data-mode="dark"] { --bg: #1c1f2b; --card: #222637; --card2: #1d2130; --line: rgb(255 255 255 / .05); --ink: #e9ecf8; --ink2: #9aa2c0; --accent: #8aa2ff;
+  --shadow: 7px 7px 18px rgb(0 0 0 / .45), -5px -5px 12px rgb(255 255 255 / .04); --good: #46d3b4; }
+.pv[data-style="soft"] .srch { box-shadow: inset 3px 3px 7px rgb(160 172 198 / .45), inset -3px -3px 7px rgb(255 255 255 / .8); border-color: transparent; }
+.pv[data-style="soft"][data-mode="dark"] .srch { box-shadow: inset 3px 3px 7px rgb(0 0 0 / .45), inset -2px -2px 6px rgb(255 255 255 / .04); }
+
+/* ---------- 4. Dark Neon (dark first: both modes draw dark) ---------- */
+.pv[data-style="neon"] { --bg: #060914; --ground: radial-gradient(50% 40% at 85% 0%, rgb(34 224 255 / .12), transparent 70%), radial-gradient(50% 45% at 0% 100%, rgb(140 90 255 / .14), transparent 70%);
+  --card: #0b1122; --card2: #0e1630; --line: rgb(34 224 255 / .26); --ink: #e8f7ff; --ink2: #8fa9c8; --accent: #22e0ff; --on-accent: #04121c; --r: 14px; --rs: 10px;
+  --shadow: 0 0 22px rgb(34 224 255 / .10); --hero-bg: linear-gradient(135deg, #0b1b3a, #131a48); --hero-ink: #e8f7ff; --good: #5dffb0; }
+.pv[data-style="neon"] .hero { border-color: rgb(34 224 255 / .5); box-shadow: 0 0 26px rgb(34 224 255 / .18), inset 0 0 30px rgb(34 224 255 / .06); }
+.pv[data-style="neon"] .hero svg { stroke: var(--accent); filter: drop-shadow(0 0 5px rgb(34 224 255 / .9)); }
+.pv[data-style="neon"] .hero strong { text-shadow: 0 0 14px rgb(34 224 255 / .45); }
+.pv[data-style="neon"] .bars i:last-child { box-shadow: 0 0 14px rgb(34 224 255 / .8); }
+.pv[data-style="neon"] .chip { background: rgb(34 224 255 / .14); color: var(--accent); }
+.pv[data-style="neon"] .tabs span.on::after { content: ""; position: absolute; bottom: 5px; width: 22px; height: 2px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.pv[data-style="neon"] .nv.on { box-shadow: inset 2px 0 0 var(--accent); }
+
+/* ---------- 5. Bento Bold ---------- */
+.pv[data-style="bento"] { --bg: #f1f1f4; --card: #fff; --card2: #f1f1f4; --line: transparent; --ink: #101014; --ink2: #5c5c68; --accent: #2b3bff; --r: 26px; --rs: 14px; --shadow: none; --num: 26px; --hero-num: 38px; --hero-bg: #2b3bff; }
+.pv[data-style="bento"][data-mode="dark"] { --bg: #0d0d10; --card: #18181c; --card2: #202026; --ink: #f4f4f6; --ink2: #a1a1ad; --accent: #6f7bff; --hero-bg: #3a48ff; --good: #b9f24a; }
+.pv[data-style="bento"] .desk .hero { grid-column: span 2; }
+.pv[data-style="bento"] .desk .grid .tile:nth-of-type(2) { background: #c8f24e; color: #101014; }
+.pv[data-style="bento"] .desk .grid .tile:nth-of-type(2) small, .pv[data-style="bento"] .desk .grid .tile:nth-of-type(2) em { color: #2a3a00; }
+.pv[data-style="bento"] .desk .grid .tile:nth-of-type(3) { background: #101014; color: #fff; }
+.pv[data-style="bento"] .desk .grid .tile:nth-of-type(3) small { color: #b9b9c4; }
+.pv[data-style="bento"] .desk .grid .tile:nth-of-type(3) em { color: #c8f24e; }
+.pv[data-style="bento"] .desk .chart { grid-column: span 1; }
+.pv[data-style="bento"] .desk .list { grid-column: span 3; }
+.pv[data-style="bento"] .head h3 { font-size: 24px; letter-spacing: -.02em; }
+.pv[data-style="bento"] .tabs { background: #101014; color: #b9b9c4; }
+.pv[data-style="bento"] .tabs span.on { color: #c8f24e; }
+
+/* ---------- 6. Tonal ---------- */
+.pv[data-style="tonal"] { --bg: #fdf7ff; --card: #f3edf7; --card2: #ece6f0; --line: transparent; --ink: #1d1b20; --ink2: #5f5a69; --accent: #6750a4; --r: 20px; --rs: 999px; --shadow: none; --hero-bg: #e8def8; --hero-ink: #21005d; }
+.pv[data-style="tonal"][data-mode="dark"] { --bg: #141218; --card: #211f26; --card2: #2b2930; --ink: #e6e0e9; --ink2: #b3adbd; --accent: #d0bcff; --on-accent: #381e72; --hero-bg: #4f378b; --hero-ink: #eaddff; --good: #7fd6b8; }
+.pv[data-style="tonal"] .chip { background: color-mix(in srgb, var(--accent) 18%, transparent); color: inherit; }
+.pv[data-style="tonal"] .hero svg { stroke: var(--accent); }
+.pv[data-style="tonal"] .tabs span.on svg { background: color-mix(in srgb, var(--accent) 22%, transparent); border-radius: 999px; padding: 4px 14px; width: 44px; height: 24px; }
+.pv[data-style="tonal"] .sb, .pv[data-style="tonal"] .tb, .pv[data-style="tonal"] .ptb, .pv[data-style="tonal"] .tabs { border-color: transparent; background: var(--card); }
+
+/* ---------- 7. Dense Pro ---------- */
+.pv[data-style="dense"] { --bg: #f4f5f7; --card: #fff; --card2: #f4f5f7; --line: #dde0e7; --ink: #15171c; --ink2: #5d6470; --accent: #2563eb; --r: 6px; --rs: 4px; --shadow: none; --gap: 8px; --pad: 9px; --fs: 12px; --num: 17px; --hero-num: 20px; --hero-bg: #fff; --hero-ink: #15171c; }
+.pv[data-style="dense"][data-mode="dark"] { --bg: #101216; --card: #171a20; --card2: #1d2128; --line: #2a2f39; --ink: #e8eaee; --ink2: #98a0ad; --accent: #6ea0ff; --hero-bg: #171a20; --hero-ink: #e8eaee; --good: #3ecf9f; }
+.pv[data-style="dense"] .nv { padding: 4px 8px; }
+.pv[data-style="dense"] .tb { height: 36px; }
+.pv[data-style="dense"] .srch { border-radius: 4px; height: 24px; }
+.pv[data-style="dense"] .btn { border-radius: 4px; padding: 4px 10px; }
+.pv[data-style="dense"] .bars { height: 54px; }
+.pv[data-style="dense"] .rowi { padding: 3px 0; font-family: ui-monospace, Consolas, monospace; font-size: 11px; }
+.pv[data-style="dense"] .head h3 { font-size: 15px; }
+
+@media (prefers-reduced-motion: reduce) { .bars i { animation: none; } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9zM4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3c.6 4.6 2.4 6.4 7 7-4.6.6-6.4 2.4-7 7-.6-4.6-2.4-6.4-7-7 4.6-.6 6.4-2.4 7-7z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><path stroke-width="3.2" d="M6 12h.01M12 12h.01M18 12h.01"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM20 20l-4-4"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20h4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 20a6 6 0 0 1 12 0M17 11a3 3 0 0 0 0-6M21 20a5 5 0 0 0-3-4.6"/></symbol>
+</svg>
+
+<div class="wrap">
+  <h1>Which modern style fits your product?</h1>
+  <p class="lead">The same small dashboard, drawn seven ways. Pick a style, switch light and dark, and look at both the desktop and the phone. All figures are sample data.</p>
+
+  <div class="bar" id="styles" role="group" aria-label="Style">
+    <button class="pick" id="st-glass" data-s="glass" aria-pressed="true">1 · Aurora Glass</button>
+    <button class="pick" id="st-minimal" data-s="minimal" aria-pressed="false">2 · Clean Minimal</button>
+    <button class="pick" id="st-soft" data-s="soft" aria-pressed="false">3 · Soft Depth</button>
+    <button class="pick" id="st-neon" data-s="neon" aria-pressed="false">4 · Dark Neon</button>
+    <button class="pick" id="st-bento" data-s="bento" aria-pressed="false">5 · Bento Bold</button>
+    <button class="pick" id="st-tonal" data-s="tonal" aria-pressed="false">6 · Tonal</button>
+    <button class="pick" id="st-dense" data-s="dense" aria-pressed="false">7 · Dense Pro</button>
+    <span class="spacer"></span>
+    <button class="mode" id="m-light" data-m="light" aria-pressed="true">Light</button>
+    <button class="mode" id="m-dark" data-m="dark" aria-pressed="false">Dark</button>
+  </div>
+
+  <div class="pv" id="pv" data-style="glass" data-mode="light">
+    <div class="desk">
+      <aside class="sb">
+        <div class="brand">Northwind</div>
+        <div class="nv on"><svg><use href="#i-home"/></svg>Overview</div>
+        <div class="nv"><svg><use href="#i-bag"/></svg>Orders</div>
+        <div class="nv"><svg><use href="#i-box"/></svg>Products</div>
+        <div class="nv"><svg><use href="#i-users"/></svg>Customers</div>
+        <div class="nv"><svg><use href="#i-spark"/></svg>Assistant</div>
+      </aside>
+      <div class="col">
+        <div class="tb"><div class="srch"><svg><use href="#i-search"/></svg>Search orders, products…</div><span class="spacer"></span><svg><use href="#i-spark"/></svg><svg><use href="#i-bell"/></svg></div>
+        <div class="content">
+          <div class="head"><h3>Good morning, Sara</h3><span>Tuesday · 3 things need you</span><button class="btn" tabindex="-1">New order</button></div>
+          <div class="grid">
+            <div class="card surf hero"><div><small>Revenue · this week</small><strong>$12,480</strong><br><span class="chip">+31% vs last week</span></div>
+              <svg viewBox="0 0 220 44" preserveAspectRatio="none"><path d="M0 36 C30 34 40 20 66 24 S110 38 132 22 S176 6 220 10"/></svg></div>
+            <div class="card surf tile"><small>Orders</small><strong>148</strong><em>+12%</em></div>
+            <div class="card surf tile"><small>Average order</small><strong>$84.30</strong><em>+4%</em></div>
+            <div class="card surf tile"><small>Low stock</small><strong>3</strong></div>
+            <div class="card surf chart"><h4>Sales by day</h4><div class="bars"><i style="height:42%"></i><i style="height:58%"></i><i style="height:36%"></i><i style="height:72%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:96%"></i></div></div>
+            <div class="card surf list"><h4>Recent orders</h4>
+              <div class="rowi"><span>#1042 · Lina K.</span><span>$156.50</span></div>
+              <div class="rowi"><span>#1041 · Omar H.</span><span>$41.00</span></div>
+              <div class="rowi"><span>#1040 · Maya S.</span><span>$98.90</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="ptb surf"><span>Northwind</span><svg><use href="#i-bell"/></svg></div>
+      <div class="pc">
+        <div class="card surf hero"><div><small>Revenue · today</small><strong>$2,274</strong><br><span class="chip">+24% vs yesterday</span></div>
+          <svg viewBox="0 0 220 44" preserveAspectRatio="none"><path d="M0 36 C30 34 40 20 66 24 S110 38 132 22 S176 6 220 10"/></svg></div>
+        <div class="row2"><div class="card surf tile"><small>Orders</small><strong>27</strong></div><div class="card surf tile"><small>Visitors</small><strong>412</strong></div></div>
+        <div class="card surf list"><h4>Recent orders</h4>
+          <div class="rowi"><span>#1042 · Lina K.</span><span>$156.50</span></div>
+          <div class="rowi"><span>#1041 · Omar H.</span><span>$41.00</span></div></div>
+      </div>
+      <div class="tabs surf">
+        <span class="on"><svg><use href="#i-home"/></svg>Home</span><span><svg><use href="#i-bag"/></svg>Orders</span><span><svg><use href="#i-box"/></svg>Products</span><span><svg><use href="#i-spark"/></svg>Assistant</span><span><svg><use href="#i-dots"/></svg>More</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about" id="about">
+    <div><b>The look</b><span id="a-look"></span></div>
+    <div><b>Best for</b><span id="a-fit"></span></div>
+    <div><b>Watch out for</b><span id="a-risk"></span></div>
+  </div>
+  <p class="note" id="a-note"></p>
+  <p class="note">After choosing: decide the default theme, comfortable or compact density, the accent colour, how lively the motion should be, and which screens to redesign first.</p>
+</div>
+
+<script>
+(function () {
+  var INFO = {
+    glass:   ["Frosted, translucent panels over a soft colour wash. Floating sidebar and bars, large rounded corners.", "Owner-facing dashboards, consumer and AI products, anything that should feel premium and alive.", "Text contrast shifts across a card, and blur is heavy on cheap phones. Needs colour behind the first screen.", ""],
+    minimal: ["Solid surfaces, thin lines in place of shadows, one accent colour used sparingly, lots of space.", "Tools people use all day: business software, finance, developer products. The safest for speed and accessibility.", "Looks plain unless spacing and type are precise.", ""],
+    soft:    ["Gently raised, pastel surfaces with soft shadows and chunky, friendly controls.", "Friendly consumer apps: wellness, education, family, a casual merchant app.", "Controls can be hard to spot if they rely on shadow alone, and dark mode needs its own shadows.", ""],
+    neon:    ["Deep dark surfaces, glowing accent lines, charts and numbers that glow.", "Analytics, monitoring, gaming, crypto, or a dramatic dark theme.", "Too much glow looks cheap. It has no true light theme.", "Dark Neon is dark-first, so Light and Dark look the same here. Its light sibling is Clean Minimal."],
+    bento:   ["A grid of different-sized cards, a few in strong solid colours, very large numbers.", "Overview and home screens that must impress; consumer finance; portfolios.", "Only suits overviews. Tables and forms fall back to a calmer style.", ""],
+    tonal:   ["Every surface is a tint of one seed colour, with pill-shaped buttons and navigation.", "Android-first and cross-platform apps; products where each customer gets a brand colour.", "Can feel like a default Android app without a distinctive typeface.", ""],
+    dense:   ["Compact rows, small type, many columns, monospace numbers, colour only for status.", "Back-office and operator tools with big tables and expert users.", "Unfriendly on phones (tables become cards there) and ugly without strict alignment.", ""]
+  };
+  var pv = document.getElementById("pv");
+  function show(s) {
+    var i = INFO[s];
+    document.getElementById("a-look").textContent = i[0];
+    document.getElementById("a-fit").textContent = i[1];
+    document.getElementById("a-risk").textContent = i[2];
+    document.getElementById("a-note").textContent = i[3];
+    document.getElementById("a-note").hidden = !i[3];
+  }
+  function replay() { pv.querySelectorAll(".bars i").forEach(function (b) { b.style.animation = "none"; void b.offsetWidth; b.style.animation = ""; }); }
+  document.getElementById("styles").addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.s) {
+      document.querySelectorAll(".pick").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      pv.dataset.style = b.dataset.s; show(b.dataset.s); replay();
+    } else if (b.dataset.m) {
+      document.querySelectorAll(".mode").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      pv.dataset.mode = b.dataset.m; document.documentElement.dataset.theme = b.dataset.m;
+    }
+  });
+  var dark = document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+  if (dark) { pv.dataset.mode = "dark"; document.getElementById("m-dark").setAttribute("aria-pressed", "true"); document.getElementById("m-light").setAttribute("aria-pressed", "false"); }
+  show("glass");
+})();
+</script>
+</body>
+</html>

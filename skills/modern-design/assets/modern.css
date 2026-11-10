@@ -1,0 +1,255 @@
+/* modern-design - tokens and recipes.
+ * Copy this file, rename the --md-* tokens to the project's own, and delete what you do not use.
+ * Theme: light on :root; dark under [data-theme="dark"] and under the OS preference unless light is forced.
+ * Everything a reviewer may ask to nudge ("stronger", "faster", "lighter") is a variable here. */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  /* ground */
+  --md-bg: #f3f4fb;
+  --md-glow-a: rgb(124 140 255 / 0.30);   /* brand blue-violet */
+  --md-glow-b: rgb(64 200 180 / 0.24);    /* mint */
+  --md-glow-c: rgb(190 150 255 / 0.22);   /* lilac */
+
+  /* surfaces */
+  --md-surface: #ffffff;                  /* solid fallback */
+  --md-glass: rgb(255 255 255 / 0.66);    /* content cards */
+  --md-glass-bar: rgb(255 255 255 / 0.80);/* bars and navigation */
+  --md-glass-line: rgb(255 255 255 / 0.70);
+  --md-hairline: rgb(40 50 110 / 0.12);
+
+  /* inks - stepped one shade stronger than a flat UI would use, for glass */
+  --md-ink: #12163a;
+  --md-ink-2: #3f4670;
+  --md-ink-3: #5d6490;
+
+  /* accent + semantic (semantic is not the accent) */
+  --md-accent: #3558f0;
+  --md-accent-ink: #2443cf;
+  --md-accent-soft: rgb(53 88 240 / 0.12);
+  --md-good: #0e9f7e;
+  --md-warn: #c27a06;
+  --md-bad: #d43d4f;
+
+  /* shape */
+  --md-radius-card: 20px;
+  --md-radius-bar: 18px;
+  --md-radius-panel: 22px;
+  --md-radius-pill: 999px;
+  --md-shadow-card: 0 10px 34px rgb(40 50 120 / 0.10);
+  --md-shadow-float: 0 14px 40px rgb(30 40 110 / 0.18);
+
+  /* layout */
+  --md-gap: 12px;          /* the float gap around sidebar and bars */
+  --md-bar-h: 56px;
+  --md-air: 24px;          /* from a bar to the first row */
+  --md-sidebar-w: 248px;
+
+  /* motion */
+  --md-dur-fast: 120ms;
+  --md-dur-base: 220ms;
+  --md-dur-slide: 260ms;
+  --md-dur-open: 360ms;
+  --md-dur-data: 520ms;
+  --md-ease-out: cubic-bezier(.2,.8,.2,1);
+  --md-ease-spring: cubic-bezier(.16,1,.3,1);
+
+  /* phone tab bar - its own set so its surface is a value change */
+  --md-tab-bg: rgb(232 234 242 / 0.82);    /* light theme: light-grey glass (option A) */
+  --md-tab-ink: #5a6080;
+  --md-tab-ink-lit: var(--md-accent-ink);
+  --md-tab-line: var(--md-accent);
+  --md-tab-line-core: #1f3fd6;             /* on a light bar the core is DEEPER, not whiter */
+  --md-tab-bloom: rgb(53 88 240 / 0.28);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --md-bg: #0c0f24;
+    --md-glow-a: rgb(84 76 214 / 0.42);
+    --md-glow-b: rgb(18 140 132 / 0.30);
+    --md-glow-c: rgb(120 60 200 / 0.26);
+    --md-surface: #171c40;
+    --md-glass: rgb(28 34 76 / 0.58);
+    --md-glass-bar: rgb(22 27 62 / 0.78);
+    --md-glass-line: rgb(170 185 255 / 0.16);
+    --md-hairline: rgb(170 185 255 / 0.14);
+    --md-ink: #f2f4ff;
+    --md-ink-2: #c3c9ec;
+    --md-ink-3: #9aa2cf;
+    --md-accent: #7d95ff;
+    --md-accent-ink: #a9b8ff;
+    --md-accent-soft: rgb(125 149 255 / 0.18);
+    --md-good: #3fd0b2; --md-warn: #f0b24a; --md-bad: #ff7a8a;
+    --md-shadow-card: 0 10px 34px rgb(0 0 0 / 0.35);
+    --md-shadow-float: 0 14px 40px rgb(0 0 0 / 0.5);
+    --md-tab-bg: rgb(18 22 50 / 0.86);
+    --md-tab-ink: #a4abd0;
+    --md-tab-ink-lit: #ffffff;
+    --md-tab-line: #6f8bff;
+    --md-tab-line-core: #eef2ff;           /* on dark: a near-white hot core */
+    --md-tab-bloom: rgb(111 139 255 / 0.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --md-bg: #0c0f24;
+  --md-glow-a: rgb(84 76 214 / 0.42);
+  --md-glow-b: rgb(18 140 132 / 0.30);
+  --md-glow-c: rgb(120 60 200 / 0.26);
+  --md-surface: #171c40;
+  --md-glass: rgb(28 34 76 / 0.58);
+  --md-glass-bar: rgb(22 27 62 / 0.78);
+  --md-glass-line: rgb(170 185 255 / 0.16);
+  --md-hairline: rgb(170 185 255 / 0.14);
+  --md-ink: #f2f4ff;
+  --md-ink-2: #c3c9ec;
+  --md-ink-3: #9aa2cf;
+  --md-accent: #7d95ff;
+  --md-accent-ink: #a9b8ff;
+  --md-accent-soft: rgb(125 149 255 / 0.18);
+  --md-good: #3fd0b2; --md-warn: #f0b24a; --md-bad: #ff7a8a;
+  --md-shadow-card: 0 10px 34px rgb(0 0 0 / 0.35);
+  --md-shadow-float: 0 14px 40px rgb(0 0 0 / 0.5);
+  --md-tab-bg: rgb(18 22 50 / 0.86);
+  --md-tab-ink: #a4abd0;
+  --md-tab-ink-lit: #ffffff;
+  --md-tab-line: #6f8bff;
+  --md-tab-line-core: #eef2ff;
+  --md-tab-bloom: rgb(111 139 255 / 0.55);
+  color-scheme: dark;
+}
+/* Option B for the tab bar: dark glass in BOTH themes (strongest neon). Add class="md-tab-dark" to the bar. */
+.md-tab-dark {
+  --md-tab-bg: rgb(22 26 56 / 0.90);
+  --md-tab-ink: #a4abd0;
+  --md-tab-ink-lit: #ffffff;
+  --md-tab-line: #6f8bff;
+  --md-tab-line-core: #eef2ff;
+  --md-tab-bloom: rgb(111 139 255 / 0.55);
+}
+
+/* ---------- 2. Ground and glass ---------- */
+.md-ground {
+  color: var(--md-ink);
+  background:
+    radial-gradient(60% 50% at 12% 6%,  var(--md-glow-a), transparent 70%),   /* colour BEHIND THE FIRST SCREEN */
+    radial-gradient(50% 55% at 92% 22%, var(--md-glow-b), transparent 70%),
+    radial-gradient(70% 60% at 50% 100%, var(--md-glow-c), transparent 70%),
+    var(--md-bg);                                                            /* scrolls with the page: not fixed */
+}
+.md-glass, .md-glass-bar {
+  border: 1px solid var(--md-glass-line);
+  box-shadow: var(--md-shadow-card), inset 0 1px 0 rgb(255 255 255 / 0.18);   /* top-edge highlight */
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+}
+.md-glass     { background: var(--md-glass);     border-radius: var(--md-radius-card); }
+.md-glass-bar { background: var(--md-glass-bar); border-radius: var(--md-radius-bar); }
+/* glass inside glass: a tint and a hairline, never a second blur */
+.md-glass .md-inset { background: var(--md-accent-soft); border: 1px solid var(--md-hairline); border-radius: 14px; }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .md-glass, .md-glass-bar { background: var(--md-surface); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .md-glass, .md-glass-bar { background: var(--md-surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+/* phones: keep blur for bars and the largest panels only */
+@media (max-width: 767px) {
+  .md-glass.md-lite { background: color-mix(in srgb, var(--md-surface) 88%, transparent); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* ---------- 3. Desktop shell ---------- */
+.md-shell   { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--md-gap); padding: var(--md-gap); min-height: 100dvh; }
+.md-sidebar { position: sticky; top: var(--md-gap); height: calc(100dvh - 2 * var(--md-gap)); width: var(--md-sidebar-w);
+              display: flex; flex-direction: column; border-radius: var(--md-radius-panel); overflow: hidden; }
+.md-sidebar-scroll { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-gutter: stable;
+                     -webkit-mask-image: linear-gradient(#000 calc(100% - 28px), transparent);
+                             mask-image: linear-gradient(#000 calc(100% - 28px), transparent); }   /* "more below" */
+.md-topbar  { position: sticky; top: var(--md-gap); z-index: 30; height: var(--md-bar-h); display: flex; align-items: center; gap: 8px; padding-inline: 10px; }
+.md-search  { flex: 1; max-width: 32rem; height: 40px; border-radius: var(--md-radius-pill); }
+.md-main    { padding-top: var(--md-air); }                 /* one place for the air under the bar */
+/* the veil: nothing readable above or beside the floating bar - ONLY once the page has scrolled.
+ * At rest it is invisible, so it never washes out the colour behind the first screen.
+ * A fixed band over the content column (set --md-col-start to the column's inline start), from the window top
+ * to 24 px under the bar. Toggle [data-scrolled] on <html> when scrollY > 4 (one passive listener, rAF-throttled). */
+.md-veil    { position: fixed; top: 0; inset-inline: var(--md-col-start, 0) 0; z-index: 29;
+              height: calc(var(--md-gap) + var(--md-bar-h) + 24px); pointer-events: none;
+              background: linear-gradient(to bottom, var(--md-bg) 0 55%, transparent);
+              opacity: 0; transition: opacity var(--md-dur-fast) linear; }
+html[data-scrolled] .md-veil { opacity: .82; }
+/* Breakpoints, stated once: under 768 = phone (no sidebar, tab bar); 768-1099 = icon rail; 1100 and up = full sidebar. */
+@media (max-width: 1099px) { .md-sidebar { width: 64px; } }
+@media (max-width: 767px) { .md-shell { display: block; padding: 0; } .md-sidebar { display: none; } }
+
+/* ---------- 4. Phone tab bar with the sliding bell ---------- */
+.md-tabbar  { position: fixed; inset-inline: 14px; bottom: max(12px, env(safe-area-inset-bottom, 0px)); z-index: 40;
+              height: 66px; padding: 6px; border-radius: 32px; background: var(--md-tab-bg); color: var(--md-tab-ink);
+              /* NO border: an inset hairline instead, so the neon line can lie exactly on the bar's edge (one edge, not two) */
+              box-shadow: var(--md-shadow-float), inset 0 0 0 1px var(--md-hairline);
+              -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5);
+              transition: transform var(--md-dur-base) var(--md-ease-out); user-select: none; }
+.md-tabbar[data-hidden] { transform: translateY(calc(100% + 4rem)); }
+.md-tabbar ul { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); height: 100%; margin: 0; padding: 0; list-style: none; }
+.md-tabbar a, .md-tabbar button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 100%; height: 100%;
+              min-height: 44px; font-size: 12px; color: inherit; background: none; border: 0; touch-action: manipulation; }
+.md-tabbar [aria-current="page"] { color: var(--md-tab-ink-lit); }
+.md-page-with-tabbar { padding-bottom: calc(7.25rem + env(safe-area-inset-bottom, 0px)); }   /* the room the page owes the bar */
+@media (min-width: 768px) { .md-tabbar { display: none; } .md-page-with-tabbar { padding-bottom: 0; } }
+
+.md-tabline   { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; pointer-events: none;
+                /* mask relative to the PILL so the run reaches both corners and fades into them */
+                -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+                        mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%); }
+.md-tabtrack  { position: absolute; inset-block: 0; inset-inline: 6px; --dir: 1;
+                transform: translateX(calc(var(--dir) * var(--i) * 100% / var(--n)));
+                transition: transform 340ms var(--md-ease-spring); }
+[dir="rtl"] .md-tabtrack { --dir: -1; }
+.md-tabanchor { position: absolute; inset-block: 0; inset-inline-start: calc(50% / var(--n)); width: 0; }
+.md-tabanchor svg { position: absolute; top: 0; left: -700px; height: 100%; overflow: visible; fill: none; stroke-linecap: round; }
+.md-tabanchor .md-line  { stroke: var(--md-tab-line); stroke-width: 2; opacity: .6; }       /* the run: calm */
+.md-tabanchor .md-core  { stroke: var(--md-tab-line-core); stroke-width: 1.2; }             /* the core: never dims */
+/* blooms: blurred ONCE, animated by opacity only */
+.md-tabanchor .md-bloom { stroke: var(--md-tab-bloom); stroke-width: 10; filter: blur(7px); animation: md-breathe 3.6s ease-in-out infinite; }
+.md-tabglow   { position: absolute; top: 2px; left: -38px; width: 76px; height: 60px; border-radius: 50%;
+                background: radial-gradient(closest-side, var(--md-tab-bloom), transparent); opacity: .6; }
+@keyframes md-breathe { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+.md-tabbar[data-hidden] .md-bloom { animation-play-state: paused; }
+
+/* ---------- 5. Page motion ---------- */
+@keyframes md-rise    { from { opacity: 0; transform: translateY(10px); } }
+@keyframes md-slide-f { from { opacity: 0; transform: translateX(calc(var(--md-dir, 1) * 36px)); } }
+@keyframes md-slide-b { from { opacity: 0; transform: translateX(calc(var(--md-dir, 1) * -36px)); } }
+@keyframes md-sheet   { from { transform: translateY(100%); } }
+@keyframes md-fade    { from { opacity: 0; } }
+[dir="rtl"] { --md-dir: -1; }
+.md-enter         { animation: md-rise var(--md-dur-base) var(--md-ease-out) both; }      /* default for every route change */
+.md-enter-forward { animation: md-slide-f var(--md-dur-slide) var(--md-ease-out) both; }
+.md-enter-back    { animation: md-slide-b var(--md-dur-slide) var(--md-ease-out) both; }
+.md-enter-sheet   { animation: md-sheet var(--md-dur-open) var(--md-ease-spring) both; }
+.md-resolve       { animation: md-fade var(--md-dur-fast) linear both; }                  /* skeleton -> content: fade only */
+/* cascade: set style="--k: 0..n" on the sections of the home screen, once per session */
+.md-cascade > * { animation: md-rise 240ms var(--md-ease-out) both; animation-delay: calc(var(--k, 0) * 45ms); }
+
+/* ---------- 6. Data in motion ---------- */
+@keyframes md-grow { from { transform: scaleY(0); } }
+.md-bar  { transform-origin: bottom; animation: md-grow var(--md-dur-data) var(--md-ease-out) both; animation-delay: calc(var(--k, 0) * 35ms);
+           border-radius: 8px 8px 2px 2px; background: linear-gradient(to top, color-mix(in srgb, var(--md-accent) 70%, transparent), var(--md-accent)); }
+.md-bar[data-current] { filter: brightness(1.15); }
+/* rings and lines: set --len to the path length; the element's stroke-dashoffset is its final value */
+@keyframes md-draw { from { stroke-dashoffset: var(--len); } }
+.md-draw { stroke-dasharray: var(--len); animation: md-draw 700ms var(--md-ease-out) both; }
+.md-num  { font-variant-numeric: tabular-nums; }
+
+/* Short colour / background transitions on hover, focus and selected states are fine (<= 150 ms): they are state
+ * feedback, not movement. The compositor-only rule is about entrances, movement and anything that loops. */
+
+/* ---------- 7. Reduced motion: the final state, at once ----------
+ * Only DECORATIVE motion is removed. Functional animation that tells the person something is happening
+ * (a loading spinner, a progress bar) keeps running - never a blanket `* { animation: none }`. */
+@media (prefers-reduced-motion: reduce) {
+  .md-enter, .md-enter-forward, .md-enter-back, .md-enter-sheet, .md-resolve,
+  .md-cascade > *, .md-bar, .md-draw, .md-tabanchor .md-bloom { animation: none; }
+  .md-tabtrack, .md-tabbar { transition: none; }
+}
