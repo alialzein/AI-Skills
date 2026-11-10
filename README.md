@@ -20,12 +20,61 @@ when it has them.
 
 | Skill | Invoke | What it does | Guide |
 |-------|--------|--------------|-------|
+| ⭐ [`modern-design`](./skills/modern-design) | auto / `/modern-design` | A design playbook for modern dashboards and app shells — desktop and phone, light and dark, LTR and RTL. Shows you seven style samples and asks which you want **before** redesigning, then builds it properly (glass, floating shell, phone tab bar, animation, every component) and reviews the result like a creative director. | [guide](./skills/modern-design/README.md) |
 | [`teach`](./skills/teach) | `/teach` (user-invoked) | Turns the current directory into a stateful teaching workspace and teaches you a topic over multiple sessions — missions, beautiful HTML lessons, reference sheets, spaced-repetition learning records. | [guide](./skills/teach/README.md) |
 | [`production-readiness`](./skills/production-readiness) | auto / `/production-readiness` | Audits a codebase for the things teams reliably miss (untested seams, CI, secrets, API resilience, atomic writes, AI cost caps, observability, backups) and returns a severity-ranked report; can drop a checklist + CI into the repo. | [guide](./skills/production-readiness/README.md) |
 
 > `teach` is vendored from [mattpocock/skills](https://github.com/mattpocock/skills)
 > (`skills/productivity/teach`). See [Attribution](#attribution). `production-readiness` is
-> original, built with Anthropic's `skill-creator` methodology.
+> original, built with Anthropic's `skill-creator` methodology. `modern-design` is original,
+> written from a real dashboard redesign and tested by building the same brief with and without it.
+
+---
+
+## ⭐ Using the `modern-design` skill
+
+Seven modern styles, one sample dashboard — you pick, then Claude builds it.
+
+[![Aurora Glass](./skills/modern-design/examples/previews/glass-light.jpg)](./skills/modern-design/README.md)
+
+**1. Install it** (any option under [Install](#install) below — the quickest):
+
+```
+/plugin marketplace add alialzein/AI-Skills
+/plugin install ai-skills@ai-skills
+```
+
+**2. Ask for a design, in any project:**
+
+```
+Redesign my admin dashboard, make it modern.
+```
+
+**3. Choose from the samples.** Before changing anything, the skill opens a page with the same
+dashboard drawn in seven styles — Aurora Glass, Clean Minimal, Soft Depth, Dark Neon, Bento Bold,
+Tonal and Dense Pro — in light and dark, on desktop and phone
+([▶ view the samples](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/skills/modern-design/assets/style-samples.html)).
+It recommends one and asks you to confirm the style, the default theme, the density, the accent
+colour, how lively the motion should be, and which screens to start with.
+
+**4. It builds, then reviews.** Tokens first, then the background, surfaces, the shell (floating
+sidebar, glass top bar, phone tab bar), pages and components, and motion last — then it checks the
+result in both themes, on phone and desktop, scrolled, empty and full of data, and tells you what
+is not good enough yet.
+
+Other things to ask it:
+
+```
+Here is a screenshot I like — what are these patterns called? Build mine like it.
+Review this page like a creative director. What makes it look cheap?
+Add a floating bottom tab bar with a sliding neon indicator on the phone.
+Animate the charts and the numbers when a page opens.
+Make it work in Arabic (right-to-left) and in dark mode.
+```
+
+It is a **living** skill: every design round adds what it taught (see its
+[CHANGELOG](./skills/modern-design/CHANGELOG.md)). Full guide, all seven previews and the file
+map: [`skills/modern-design/README.md`](./skills/modern-design/README.md).
 
 ---
 
@@ -37,6 +86,14 @@ AI-Skills/
 │   ├── plugin.json              # makes this repo an installable plugin
 │   └── marketplace.json         # ...and a marketplace that lists that plugin
 ├── skills/
+│   ├── modern-design/
+│   │   ├── SKILL.md             # choose a style → order of work → laws → red flags
+│   │   ├── references/          # styles, every component, glass, shell, phone, motion, review
+│   │   ├── assets/              # style-samples.html (7 styles) + modern.css (tokens, recipes)
+│   │   ├── scripts/             # contrast.mjs — text contrast on translucent surfaces
+│   │   ├── examples/previews/   # a picture of each style
+│   │   ├── CHANGELOG.md         # what was learned, and when
+│   │   └── README.md
 │   ├── teach/
 │   │   ├── SKILL.md             # the skill definition (frontmatter + instructions)
 │   │   ├── *-FORMAT.md          # templates the skill references
@@ -133,6 +190,10 @@ continue, and answer its questions to steer what it teaches next.
 
 Examples live **with their skill**:
 
+- [`skills/modern-design/assets/style-samples.html`](./skills/modern-design/assets/style-samples.html) —
+  one sample dashboard in seven modern styles, light and dark, desktop and phone
+  ([▶ view](https://htmlpreview.github.io/?https://github.com/alialzein/AI-Skills/blob/main/skills/modern-design/assets/style-samples.html));
+  a picture of each style is in [`examples/previews/`](./skills/modern-design/examples/previews).
 - [`skills/teach/examples/leadership-course/`](./skills/teach/examples/leadership-course) —
   a real, worked `teach` workspace ("How to be a strong leader"): a full 7-lesson course with
   mission, curated resources, a glossary, seven interactive HTML lessons, and a printable
