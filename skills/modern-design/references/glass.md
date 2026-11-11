@@ -57,6 +57,19 @@ On glass, the colour behind text changes across a single card.
 - **Count blurred surfaces.** A desktop page can carry a dozen; a phone should carry a handful. On small screens keep blur for the bars and the two or three largest panels and give the rest a higher-opacity fill with no blur.
 - **Never animate `backdrop-filter` or `filter`.** For a breathing glow, pre-blur a layer once and animate its `opacity`.
 - One blur per bar - not one per button inside it.
+- **The phone budget, from a measured build** (a glass dashboard, production build, 390 px, CPU x4, five pages, scrolling and at rest):
+
+  | Run | Compositor work per scroll frame | Frames drawn per second at rest |
+  |-----|----------------------------------|---------------------------------|
+  | As designed (blur everywhere, ambient loops) | 5.3 ms | about 53, forever |
+  | No endless animations | 3.8 ms (-29 %) | 0 |
+  | + blur on the top bar only | 2.2 ms (-57 %) | 0 |
+  | + no blur anywhere | 1.1 ms (-79 %) | 0 |
+
+  So, **on phones: no animation that runs forever** (a drifting ground, looping tile art, breathing glows keep the whole page redrawing while nobody touches it - heat, battery, and a busy GPU when the scroll starts), **and blur on the top bar only**. Cards, veils and sheets become tinted translucent fills with the same border and top highlight, so they still read as the glass family; a sheet's fill is opaque enough that nothing behind it can be read. Desktop keeps the full recipe. One-shot entrances stay.
+- Put that rule in one place (one phone-level block that names every loop) with a test that fails when a new infinite animation is added without a phone decision - loops arrive one innocent decoration at a time.
+- The main thread was not the problem in that build (no long tasks); the compositor was. Measure both, at rest as well as while scrolling - "frames per second at rest" should be zero.
+- A headless browser's software compositor gives the direction, not the real-phone figures: the owner's own phone is the last test.
 - Fallbacks:
 
 ```css

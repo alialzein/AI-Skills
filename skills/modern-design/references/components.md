@@ -33,6 +33,33 @@ One per home screen. Gradient or accent surface, label, the key number at displa
 
 The filter bar is one glass strip (search + chip groups; **every** chip group labelled, or none - mixed labels put the groups on different baselines). Rows: avatar or thumbnail, primary + secondary text, status chip, actions at the end. On a phone, rows become cards or a two-line list with a row-actions sheet.
 
+A table's header row has its own quiet fill - one token (`--table-head`: the brand colour at about 7 % over the card in light, one step over the card in dark), opaque, set in the shared table primitive. A header the same colour as the rows reads as another row; a translucent sticky header lets rows show through it.
+
+## Content first (the "dense page" cure)
+
+A page can pass every size and contrast check and still be hard to use: three rows of tabs and two paragraphs before an empty box. Total page length does not catch it. Measure these on the phone for every page, and budget them:
+
+- **Content top** - where the first row, tile, field or empty state begins: 320 px or less (380 with a record header).
+- **Navigation levels** stacked above it: two at most.
+- **Wrapping rows** of tabs or filters: none.
+
+The cures, each a rule:
+
+| Seen | Rule |
+|------|------|
+| Three levels of tabs | Two levels on a phone. The section strip stays; the page's own tabs and its status filter merge into ONE chip row with counts - statuses first, a separator, then the other views ("To approve 3 · To be paid 1 · Done · Declined | History"). |
+| Instructions as paragraphs | One line, then the "i". How-it-works text lives in the hint beside the title with a "read the guide" link; words that matter at the moment of action go on the action itself. A test fails a subtitle over a one-line character budget that has no hint. |
+| A filter block before any data | Filters are chips in that same row ("This month", "Filters · n" opening a sheet). Search is an icon unless the page's job is search. With an empty list and no filter set, the filters are not drawn. |
+| An empty box under a wall of controls | A queue opens on the first stage that has work. When everything is empty: one card - icon, title, ONE sentence, one useful action. No table frame, no "0 items" line. A count that failed to load is never read as "all caught up". |
+| The record header repeated on every tab | Full header on the overview only; elsewhere one line with a "more" button. |
+| One long form | A list of groups, each showing its current value and opening its own screen with its own save and eight fields at most. |
+| Two filled buttons | One filled primary per screen; the rest outline; rare or destructive ones behind "more". |
+| Verbs far from the record | The action sits on the record's row (Approve, Mark paid); the destructive one is last, behind "more". |
+
+**Chips that change the address are links** (`<a href>`, `aria-current` on the true page, the strip a `nav`); chips that toggle something on the page are buttons with `aria-pressed`. A link chip still answers a tap at once: the tapped chip takes the open look immediately (the framework's pending-link signal, or a small optimistic state reset on route arrival, Back / Forward and cancel), while `aria-current` waits for the route. A modified or middle click lights nothing.
+
+**Advice is not content.** A home page that opens with "set up your shop", "needs a look" and "we noticed" before any number treats every owner as someone with homework. Numbers first; all advice folds into ONE quiet row (a compact button beside the page's actions on a desk) that opens a panel; each tip can be hidden for a period and shown again; urgent things (orders to confirm, unpaid invoices, limits reached) are not tips and stay on the page. When there is nothing to show, the row is not drawn.
+
 ## Portrait cards (agents, team, people)
 
 - Desktop: a portrait-led card - a large picture area, the name and role over a gradient at its foot, a tint per category so five cards are not five identical panels; then a one-line "what they do", a status chip, the figures as a glass strip, the action.
@@ -43,6 +70,7 @@ The filter bar is one glass strip (search + chip groups; **every** chip group la
 
 ## Profile page
 
+- **The door must be findable.** A new personal page needs a labelled row ("My profile", with the picture or initials) where people already look - the Account menu on desktop, the More sheet's account strip on a phone. A bare avatar circle, or a pill that looks exactly like what was there before, is not a door: the owner will report the page as missing.
 - Opens with **identity**: avatar 72-96 px (picture or initials) with a small camera button on its corner, the name as the heading, the role as a chip.
 - Two columns on desktop (identity + sign-in / security | details + language and appearance), one on the phone. Not one narrow column beside an empty half.
 - E-mail read-only with the reason; password as a link stating its consequence ("signs you out everywhere else").
@@ -76,6 +104,13 @@ Presentation over an engine - the look must never require data the engine does n
 - Offer **three animated candidates on one comparison page** - real sizes (20 / 24 / 32 px), real contexts (launcher button, chat header, top bar, tab bar), both themes, states idle / thinking / has-a-note, a Moving / Still switch, the current icon beside them. Never ship one guess for a brand element.
 - A candidate must look new **at rest**, not only in motion - most of the time it is still.
 - Signals must survive 20 px: a halo pulse or a dot reads; a thin glint does not.
+- **Judge a toolbar mark in the toolbar,** at its real size, beside its neighbours and today's icon. A drawing that is lovely at 96 px can be a smudge at 24 px: tall "figure holding a thing" compositions become totems and side-by-side pairs become two blobs.
+- In a **combined icon** (a mark plus a companion figure) the main shape keeps at least 55 % of the box; put the companion around or under it, not beside it. Compositions that fail in the toolbar are still good illustrations for empty states and welcome screens.
+- A note / status badge belongs to the whole icon, not to a nested part.
+- **Making one shape read as INSIDE another at icon size:** three layers - a back layer (dark recess + glow), the content, then a front plate with the window cut out and glass over it. Let the plate overlap the content's edge and clip the content (and its glow) to the window. An object merely placed on a cup or stand reads as "on", never "in".
+- **Making an icon feel "real":** one light source, three layers (a lit shell, a dark recess, a glowing core) and a contact shadow. Keep the shading static; animate only a light travelling along a path plus small moves. Fine detail (seams, bolts) vanishes under ~96 px, so choose between finishes at the shipping size in the real bar, not in the close-up.
+- **Decide the forms before drawing candidates.** Owners reject a colour mark inside a row of line icons, so every candidate needs both forms from the first round, or a round is wasted.
+- In a 16 px icon, a "thinking" animation only reads if the moving part is a **different colour** from the icon's ink (an accent-coloured scan, tip or trace); a 2 px movement in the same grey is invisible.
 - Two forms: the colourful animated mark where it stands alone (a launcher button, a chat header); a monochrome line glyph where it sits in a row of icons (a tab bar, a sidebar row). A third place, a top bar of icon buttons, may want its own answer - an *animated line icon* in the row's ink - so ask rather than assume.
 - Expect the pick to split by place: one owner chose a glass orb for the launcher and chat, a plain sparkle for the tab bar, and asked for a new "robotic" animated line icon in the top bar. Show each candidate in every place it could live.
 - SVG + CSS, a couple of kB, static under reduced motion.

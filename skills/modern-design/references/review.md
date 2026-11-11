@@ -48,9 +48,23 @@ Review like a demanding creative director with the reference open beside the dra
 - Is "alive" motion actually visible? Is anything tiring?
 - Reduced motion: truly still?
 
+**6b. Performance claims** - before an effect is dropped "for performance", measure with and without it. The guilty-looking parts (blur, `:has()`, a step-back scale) are often not the cost; mounting and style recalculation are. And measure what the person feels - "tap to sheet at rest", "content visible" - not only frames per second. The same goes for speed-up tricks: pre-mounting a sheet "so it opens faster" can make it slower (moving a pre-built subtree into a dialog still pays layout, style and focus work in the opening frame) - measure tap-to-rest before adopting one.
+
+**6e. Check your own probe before sending a finding back.** A script that samples "the number on screen" can be reading a hidden layer (many count-ups keep a hidden final-value element for screen readers and animate a second one). Read the element the person sees - test visibility, or use the builder's own markers - and confirm a "does not animate" finding with the builder's probe first. A wrong finding costs the builder an evening; say so plainly when it was yours.
+
+**6f. A movement strip must come from a real interaction.** A frame strip made by setting the animation's variable by hand proves the curve and hides the behaviour: check in the LAST frame that every part of the state agrees (the light, the lit icon, the label), and ask how the strip was made. Then ask what the control does between a tap and a slow route arriving - "nothing" is a finding.
+
+**6g. Keep credentials out of test servers' logs.** A development server may log the arguments of every server action, a sign-in's e-mail and password included, and an agent that tails the log copies them into its transcript. Sign in against a production build or reuse a saved session; never tail a dev-server log that may hold a sign-in; if it happens, tell the owner at once and have the password changed.
+
+**6d. Page weight** - a redesign adds weight quietly. Measure the first-load size of the heaviest routes against the previous build in the same folder. Two usual causes: shell extras loaded on every page that could load when opened (a More sheet, tooltips, an account menu, motion code), and a component shared by a public page and the app that imports app-only pieces - pass the app-only block in as a slot from the app's page, or the public page ships the app's dialog and popover code too.
+
+**6c. Tap targets by measurement** - a labelled cell is only a 44 px target if the label is inside the control. Check with `document.elementFromPoint` on the label: if it has no button or link ancestor, the real target is the small icon.
+
 **7. Direction and theme** - RTL mirrored where it should be and not where it should not (digits, codes); dark designed, not inverted.
 
 **8. Nothing lost** - every guarantee the old component had (focus return, hide-on-scroll, badges, permissions) still holds.
+
+**9. Published screenshots** (guides, marketing, a public changelog) - they are taken from a signed-in account, so mask what is personal. Hide the datum (the e-mail text, the avatar), never the whole row or control the picture is about: a hidden band removes the very thing the guide is pointing at.
 
 ## Writing the review
 
