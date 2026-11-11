@@ -1,7 +1,7 @@
 {
   "name": "ai-skills",
   "description": "Alialzein's personal collection of Claude Code Agent Skills, packaged as an installable plugin.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "alialzein",
     "email": "Alizein1997@gmail.com"

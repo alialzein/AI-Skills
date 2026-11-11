@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "ai-skills",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Alialzein's personal Claude Code skills marketplace.",
   "owner": {
     "name": "alialzein",
@@ -10,9 +10,9 @@
   "plugins": [
     {
       "name": "ai-skills",
-      "description": "A growing collection of personal Agent Skills (modern-design, teach, production-readiness).",
+      "description": "A growing collection of personal Agent Skills (modern-design, security-test, phone-first-dashboard, production-readiness, teach).",
       "source": "./",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "alialzein",
         "email": "Alizein1997@gmail.com"

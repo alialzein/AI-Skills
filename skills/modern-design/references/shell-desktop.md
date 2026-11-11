@@ -22,7 +22,8 @@ The shell frames every page a person will judge. Build it before the first page.
 - **The active row must be in view.** On load and on route change, scroll it into view inside the sidebar's own scroller (`block: "nearest"`); fade the foot of the scroller so a cut row reads as "more below", not as clipped.
 - Active row: a soft tinted ground plus a 3 px accent bar on the start edge. Group headings small, quiet, spaced.
 - **Collapsed rail:** the same floating panel, icons only. Each icon shows a tooltip on hover *and focus* with the label and its badge, on the inline-end side, after ~150 ms; never on touch.
-- A small **usage card** above the footer (plan name, the tightest limit as a thin bar, a link) is a good use of the foot - from data the layout already has, hidden on the rail.
+- A small **usage card** above the footer (plan name, the tightest limit as a thin bar, a link) is a good use of the foot, hidden on the rail. **Shell widgets must not bring their own uncached read to every page:** the shell renders on every full load and every refresh after a save, so a widget's data comes from what the layout already has or from a per-account cache with a few minutes' life, invalidated only by the events that really change it.
+- **An icon family carries one meaning across the product.** If the sparkle means "the assistant", nothing else wears a sparkle; a neighbouring feature (visitor chat, AI settings) gets an icon about what it does (bubbles, a gauge).
 - Logical properties throughout (`margin-inline-start`, `inset-inline-start`): in RTL it floats on the other side for free.
 - Below the tablet breakpoint there is no sidebar. The phone has its own navigation.
 
@@ -69,6 +70,16 @@ Adjust the numbers to the product, but write them in one place and use them ever
 - The bar's outer edges and the content column's edges are the **same** two lines. If the bar runs 20 px wider than the cards, every page has a step.
 - Air: ~24 px from the bar's lower edge to the first row of any page - set once in the shell, never per page.
 - Page content fills the desk: a profile or settings page that is one 700 px column on a 1440 screen is half empty. Centre it or give it two columns.
+
+## The loading state has the shell's shape
+
+If the layout that draws the shell waits for data (the account, the plan, badges), the loading boundary ABOVE it has no shell around it, and the person sees a frameless skeleton - blocks flush against the window's edge, no sidebar, no bar - and then a jump. Give that boundary a ghost of the shell: the ground, a still ghost sidebar (desk) or top bar and tab bar (phone), and the page skeleton inside the real content column.
+
+- Take the geometry from one shared list of the shell's own classes or variables, and add a parity test that fails when the ghost and the real shell drift. Check the parts the test cannot see by eye (a sidebar's foot changes height when a card inside it changes).
+- Server-rendered, no client code, no blur; only the content's own skeletons pulse.
+- Better still, start the slow reads as promises and stream them into the shell, so the real shell paints at once.
+
+A widget in the sidebar's foot (plan, usage) leads with the ONE figure the person cares about most (credits left), and names the nearest limit as a smaller second line only when it is near; a limit of one is not a warning. Its placeholder has the card's usual height in each language.
 
 ## Shell checklist
 

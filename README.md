@@ -21,6 +21,8 @@ when it has them.
 | Skill | Invoke | What it does | Guide |
 |-------|--------|--------------|-------|
 | ⭐ [`modern-design`](./skills/modern-design) | auto / `/modern-design` | A design playbook for modern dashboards and app shells — desktop and phone, light and dark, LTR and RTL. Shows you seven style samples and asks which you want **before** redesigning, then builds it properly (glass, floating shell, phone tab bar, animation, every component) and reviews the result like a creative director. | [guide](./skills/modern-design/README.md) |
+| [`security-test`](./skills/security-test) | auto / `/security-test` | A safe, fully-local security check of a product you own: the repo's own tests plus a code review against a fixed A–H checklist (access control, RLS, injection, client-side, auth, business logic, AI/LLM, platform) on a throwaway database. Never touches production; your findings stay in a private folder. | [guide](./skills/security-test/README.md) |
+| [`phone-first-dashboard`](./skills/phone-first-dashboard) | auto / `/phone-first-dashboard` | The engineering of dashboards and admin panels that work on a phone (390 × 844, LTR and RTL): the rules, the component roles, the pitfalls a real phone program paid for, and a phone gate that measures every page. Pairs with `modern-design` for the look. | [guide](./skills/phone-first-dashboard/README.md) |
 | [`teach`](./skills/teach) | `/teach` (user-invoked) | Turns the current directory into a stateful teaching workspace and teaches you a topic over multiple sessions — missions, beautiful HTML lessons, reference sheets, spaced-repetition learning records. | [guide](./skills/teach/README.md) |
 | [`production-readiness`](./skills/production-readiness) | auto / `/production-readiness` | Audits a codebase for the things teams reliably miss (untested seams, CI, secrets, API resilience, atomic writes, AI cost caps, observability, backups) and returns a severity-ranked report; can drop a checklist + CI into the repo. | [guide](./skills/production-readiness/README.md) |
 
@@ -28,6 +30,8 @@ when it has them.
 > (`skills/productivity/teach`). See [Attribution](#attribution). `production-readiness` is
 > original, built with Anthropic's `skill-creator` methodology. `modern-design` is original,
 > written from a real dashboard redesign and tested by building the same brief with and without it.
+> `security-test` and `phone-first-dashboard` are original, extracted from a production multi-tenant
+> SaaS where they are updated every round; the public copies are synced from there.
 
 ---
 
@@ -100,6 +104,13 @@ AI-Skills/
 │   │   ├── README.md           # how to deploy & use this skill
 │   │   └── examples/
 │   │       └── leadership-course/   # a full worked example (7-lesson course)
+│   ├── security-test/
+│   │   ├── SKILL.md             # safety contract → privacy rule → the loop
+│   │   ├── references/          # review procedure, A–H catalog, profile / log / fix-list templates
+│   │   └── examples/            # one run on a fictional product
+│   ├── phone-first-dashboard/
+│   │   ├── SKILL.md             # phone rules → component roles → pitfalls → the gate
+│   │   └── references/          # pitfalls by topic, building a phone gate
 │   └── production-readiness/
 │       ├── SKILL.md            # lean workflow (progressive disclosure)
 │       ├── references/         # detailed checklist, grep recipes, stack profiles
@@ -199,6 +210,9 @@ Examples live **with their skill**:
   mission, curated resources, a glossary, seven interactive HTML lessons, and a printable
   reference card. Its [README](./skills/teach/examples/leadership-course/README.md) has
   one-click links to view the rendered lessons.
+- [`skills/security-test/examples/sample-run.md`](./skills/security-test/examples/sample-run.md) —
+  one security run start to finish on a fictional product: safety gate, repo tests, catalog review,
+  verification, report.
 - [`skills/production-readiness/examples/sample-review.md`](./skills/production-readiness/examples/sample-review.md) —
   a worked production-readiness review showing the report shape and severity ranking.
 
