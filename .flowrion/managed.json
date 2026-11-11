@@ -1,0 +1,24 @@
+{
+  "generatedBy": "flowrion skills-marketplace",
+  "flowrionVersion": "0.1.0",
+  "plugins": [
+    "requirements-analysis",
+    "codebase-exploration",
+    "acceptance-criteria",
+    "api-design",
+    "database-design",
+    "architecture-planning",
+    "task-decomposition",
+    "test-planning",
+    "migration-planning",
+    "unit-testing",
+    "frontend-development",
+    "backend-development",
+    "database-migration-authoring",
+    "documentation",
+    "code-review",
+    "security-review",
+    "performance-evaluation",
+    "risk-classification"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "security-review",
+  "description": "Look for the ways the change can be abused.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

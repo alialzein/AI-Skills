@@ -1,0 +1,8 @@
+{
+  "name": "acceptance-criteria",
+  "description": "Write criteria a reviewer can check without asking you what you meant.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

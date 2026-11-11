@@ -1,0 +1,8 @@
+{
+  "name": "requirements-analysis",
+  "description": "Turn a request into a problem statement that someone else could build from.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

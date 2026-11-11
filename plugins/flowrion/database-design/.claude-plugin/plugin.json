@@ -1,0 +1,8 @@
+{
+  "name": "database-design",
+  "description": "Shape data so that it stays correct under concurrency and change.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

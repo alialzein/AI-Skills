@@ -1,0 +1,8 @@
+{
+  "name": "risk-classification",
+  "description": "Judge how much harm the change could do if it is wrong, so the right people review it.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

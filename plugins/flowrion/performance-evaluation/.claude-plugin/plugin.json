@@ -1,0 +1,8 @@
+{
+  "name": "performance-evaluation",
+  "description": "Check that the change does not make the system slower or costlier than it must be.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

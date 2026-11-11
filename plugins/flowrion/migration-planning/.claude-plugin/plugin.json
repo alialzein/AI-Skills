@@ -1,0 +1,8 @@
+{
+  "name": "migration-planning",
+  "description": "Change a schema without stopping the service or losing data.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}

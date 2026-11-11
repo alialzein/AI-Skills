@@ -1,0 +1,8 @@
+{
+  "name": "architecture-planning",
+  "description": "Record the decision before the code, so that reviewers judge the approach and not only the diff.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Flowrion"
+  }
+}
