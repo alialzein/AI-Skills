@@ -8,3 +8,7 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# security-test: product profiles, run logs and fix-lists are private — never commit them
+skills/security-test/products/
+skills/security-test/runs/
